@@ -1,0 +1,24 @@
+{
+  "name": "stock-simulator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jadnco/stock-simulator.git"
+  },
+  "author": "Jaden Dessureault <hello@jadn.co>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jadnco/stock-simulator/issues"
+  },
+  "homepage": "https://github.com/jadnco/stock-simulator",
+  "dependencies": {
+    "body-parser": "^1.12.3",
+    "express": "^4.12.3",
+    "mongoose": "^4.0.2"
+  }
+}
