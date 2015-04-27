@@ -12,14 +12,20 @@ Dependencies:
 
 Install package dependencies:
 
-    npm install
+```sh
+npm install
+```
 
 Start the server; I use [Nodemon](https://github.com/remy/nodemon) to restart the server when changes are made:
 
-    nodemon // or `node app.js`
+```sh
+nodemon # or `node app.js`
+```
 
 Start the database:
 
-    mongod
+```sh
+mongod
+```
 
 The app will now be running on `http://localhost:3000`
