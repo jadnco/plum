@@ -1,5 +1,5 @@
 {
-  "name": "stock-simulator",
+  "name": "Plum",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jadnco/stock-simulator.git"
+    "url": "https://github.com/jadnco/Plum.git"
   },
   "author": "Jaden Dessureault <hello@jadn.co>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jadnco/stock-simulator/issues"
+    "url": "https://github.com/jadnco/Plum/issues"
   },
-  "homepage": "https://github.com/jadnco/stock-simulator",
+  "homepage": "https://github.com/jadnco/Plum",
   "dependencies": {
     "body-parser": "^1.12.3",
     "express": "^4.12.3",
