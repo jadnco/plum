@@ -1,0 +1,9 @@
+body {
+  background: #999;
+  animation: test 2s;
+  transition: all 1s;
+
+  $color: #ccc;
+
+  background: rgba($color, 0.5);
+}
