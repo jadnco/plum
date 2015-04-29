@@ -1,7 +1,7 @@
 body {
-  background: #999;
+  background: blue;
   -webkit-animation: test 2s;
           animation: test 2s;
   -webkit-transition: all 1s;
           transition: all 1s;
-  background: rgba(204, 204, 204, 0.5); }
+  background: rgba(68, 68, 68, 0.5); }

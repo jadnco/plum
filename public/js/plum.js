@@ -1,0 +1,1 @@
+Plum = Ember.Application.create();

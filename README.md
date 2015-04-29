@@ -10,22 +10,22 @@ Dependencies:
 
 ### Running the app
 
-Install package dependencies:
+1. Install package dependencies:
 
 ```sh
 npm install
 ```
 
-Start the server; I use [Nodemon](https://github.com/remy/nodemon) to restart the server when changes are made:
-
-```sh
-nodemon # or `node app.js`
-```
-
-Start the database:
+2. Start the database:
 
 ```sh
 mongod
+```
+
+3. Start the server; I use [Nodemon](https://github.com/remy/nodemon) to restart the server when changes are made:
+
+```sh
+npm start # node app.js && gulp
 ```
 
 The app will now be running on `http://localhost:3000`
