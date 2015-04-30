@@ -1,3 +1,3 @@
 Plum.ApplicationAdapter = DS.RESTAdapter.extend({
-  namespace:"api"
+  namespace: 'api'
 });

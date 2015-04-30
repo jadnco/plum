@@ -1,3 +1,3 @@
 Plum.ApplicationSerializer = DS.RESTSerializer.extend({
-  primaryKey:"_id"
+  primaryKey: '_id'
 });
