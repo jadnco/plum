@@ -1,1 +1,1 @@
-Plum = Ember.Application.create();
+var Plum = Ember.Application.create();

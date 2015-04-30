@@ -1,5 +1,7 @@
-<div class="container" data-type="LOREM">
-  <h1>A magical Ember App</h1>
-  <aside id="hello">
-  </aside>
+<div class="container">
+  <ul>
+    <li>{{#link-to 'portfolio'}}Portfolio{{/link-to}}</li>
+    <li>{{#link-to 'user'}}User{{/link-to}}</li>
+  </ul>
+  {{outlet}}
 </div>

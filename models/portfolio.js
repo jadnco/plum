@@ -8,7 +8,7 @@ var PortfolioSchema = new Schema({
   // Liquid capital
   cash: Number,
   overallReturn: Number,
-  createdAt: Date,
+  createdAt: Date/*,
   owner: {
     type: Schema.Types.ObjectId,
     ref: 'User'
@@ -16,7 +16,7 @@ var PortfolioSchema = new Schema({
   transcations: [{
     type: Schema.Types.ObjectId,
     ref: 'Transcation'
-  }]
+  }] */
 });
 
 module.exports = mongoose.model('Portfolio', PortfolioSchema);

@@ -7,11 +7,7 @@ var UserSchema = new Schema({
   passwordHash: String,
   value: Number,
   overallReturn: Number,
-  createdAt: Date/*
-  portfolios: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Portfolio'
-  }]*/
+  createdAt: Date
 });
 
 module.exports = mongoose.model('User', UserSchema);
