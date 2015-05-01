@@ -1,9 +1,8 @@
+* {
+  //margin: 0;
+  //padding: 0;
+}
+
 body {
-  background: blue;
-  animation: test 2s;
-  transition: all 1s;
-
-  $color: #444;
-
-  background: rgba($color, 0.5);
+  font-family: sans-serif;
 }

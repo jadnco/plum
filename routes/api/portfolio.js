@@ -4,11 +4,8 @@ var Portfolio = require('../../models/portfolio');
 module.exports.add = function(req, res) {
   var portfolio = new Portfolio(req.body.portfolio);
 
-  console.log("Request ->> " + JSON.stringify(req.body.portfolio));
-
   portfolio.save(function(err) {
     if (err) res.send(err);
-    console.log("New record created: " + portfolio.name);
 
    res.json({portfolio: portfolio});
   });

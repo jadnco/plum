@@ -5,14 +5,16 @@ var PortfolioSchema = new Schema({
   name: String,
   slug: String,
   value: Number,
-  // Liquid capital
   cash: Number,
   overallReturn: Number,
-  createdAt: Date/*,
+  created: {
+    type: Date,
+    default: Date.now
+  },
   owner: {
     type: Schema.Types.ObjectId,
     ref: 'User'
-  },
+  }/*,
   transcations: [{
     type: Schema.Types.ObjectId,
     ref: 'Transcation'
