@@ -1,3 +1,5 @@
 Plum.UserController = Ember.ObjectController.extend({
-  username: ''
+  username: function() {
+    return this.get('id');
+  }.property('username')
 });
