@@ -32,7 +32,7 @@ The app will now be running on `http://localhost:3000`
 
 ## API
 
-### HTTP Methods
+### Users
 
 #### GET
 
@@ -92,3 +92,11 @@ Response:
   }
 }
 ```
+
+---
+
+### Portfolios
+
+--- 
+
+### Transactions
