@@ -52,10 +52,10 @@ router.route('/users/:q')
     users.get(req, res, query);
   })
   .put(function(req, res) {
-    users.update(req, res, req.params.id);
+    users.update(req, res, req.params.q);
   })
   .delete(function(req, res) {
-    users.delete(req, res, req.params.id);
+    users.delete(req, res, req.params.q);
   });
 
 module.exports = router;

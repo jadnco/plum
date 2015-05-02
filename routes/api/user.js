@@ -23,6 +23,10 @@ module.exports.get = function(req, res, query) {
   User.find(query, function(err, user) {
     if (err) res.send(err);
 
+    console.log('******* User Request *******')
+    console.log("Found user: " + user);
+    console.log('****************************');
+
     res.json({user: user});
   });
 };
