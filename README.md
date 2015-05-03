@@ -48,11 +48,15 @@ Response:
 {
   "users": [
     {
-      "_id": "5542d6371cc1a25e385b6ff8",
-      "name": "John Smithy",
-      "username": "john",
+      "_id": "55443688405dc7b5bd27620f",
+      "name": "Johnny Depp",
+      "username": "jdepp",
       "__v": 0,
-      "created": "2015-05-01T01:26:15.939Z"
+      "portfolios": [
+        "554593bdff677a27261b8aba",
+        "554593cfff677a27261b8abb"
+      ],
+      "created": "2015-05-02T02:29:28.691Z"
     },
 
     ...
@@ -96,6 +100,74 @@ Response:
 ---
 
 ### Portfolios
+
+#### GET
+
+Returns a list of all portfolios
+
+##### Example
+
+> GET /api/portfolios
+  
+Response:
+
+```json
+{
+  "portfolios": [
+    {
+      "_id": "554593cfff677a27261b8abb",
+      "slug": "blue-chips",
+      "name": "Blue Chips",
+      "value": 149500,
+      "overallReturn": 0.15,
+      "owner": "55443688405dc7b5bd27620f",
+      "__v": 0,
+      "created": "2015-05-03T03:19:43.604Z"
+    },
+
+    ...
+  ]
+}
+```
+
+#### GET
+
+Returns a list of all portfolios of a user
+
+##### Example
+
+> GET /api/users/:uq/portfolios
+
+`:uq` can either be a user's `username` or `_id`.
+  
+Response:
+
+```json
+{
+  "portfolios": [
+    {
+      "_id": "554593bdff677a27261b8aba",
+      "slug": "small-cap-stocks",
+      "name": "Small Cap Stocks",
+      "value": 89531,
+      "overallReturn": -0.07,
+      "owner": "55443688405dc7b5bd27620f",
+      "__v": 0,
+      "created": "2015-05-03T03:19:25.236Z"
+    },
+    {
+      "_id": "554593cfff677a27261b8abb",
+      "slug": "blue-chips",
+      "name": "Blue Chips",
+      "value": 149500,
+      "overallReturn": 0.15,
+      "owner": "55443688405dc7b5bd27620f",
+      "__v": 0,
+      "created": "2015-05-03T03:19:43.604Z"
+    }
+  ]
+}
+```
 
 --- 
 
