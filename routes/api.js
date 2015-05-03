@@ -38,6 +38,39 @@ router.route('/users/:uq/portfolios')
   })
 
 /**
+* -- Transaction ---------->
+*/
+
+var transactions = require('./api/transaction');
+
+router.route('/transactions')
+  .post(function(req, res) {
+    transactions.add(req, res);
+  })
+  .get(function(req, res) {
+    transactions.getAll(req, res);
+  });
+
+router.route('/transactions/:id')
+  .get(function(req, res) {
+    transactions.get(req, res, req.params.id);
+  })
+  .put(function(req, res) {
+    transactions.update(req, res, req.params.id);
+  })
+  .delete(function(req, res) {
+    transactions.delete(req, res, req.params.id);
+  });
+
+// Get all transactions of portfolio
+router.route('/portfolios/:pq/transactions')
+  .get(function(req, res) {
+    var _query = query(req.params.pq, {slug: req.params.pq});
+
+    transactions.getByQuery(req, res, _query);
+  })
+
+/**
 * -- User ---------->
 */
 

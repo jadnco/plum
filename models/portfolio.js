@@ -18,11 +18,11 @@ var PortfolioSchema = new Schema({
   owner: {
     type: Schema.Types.ObjectId,
     ref: 'User'
-  }/*,
-  transcations: [{
+  },
+  transactions: [{
     type: Schema.Types.ObjectId,
     ref: 'Transcation'
-  }] */
+  }]
 });
 
 PortfolioSchema.pre('save', function(next) {
