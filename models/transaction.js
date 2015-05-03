@@ -24,6 +24,10 @@ var TransactionSchema = new Schema({
   }
 });
 
-// Pre save; value = price * shares
+TransactionSchema.pre('save', function(next) {
+  this.value = Math.round((this.shares * this.price) * 100) / 100;
+
+  next();
+});
 
 module.exports = mongoose.model('Transaction', TransactionSchema);

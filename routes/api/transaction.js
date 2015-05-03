@@ -32,7 +32,7 @@ module.exports.getAll = function(req, res) {
 };
 
 module.exports.get = function(req, res, query) {
-  Transaction.find(query, function(err, transaction) {
+  Transaction.findById(query, function(err, transaction) {
     if (err) res.send(err);
 
     res.json({transaction: transaction});

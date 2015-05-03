@@ -169,6 +169,130 @@ Response:
 }
 ```
 
+
 --- 
 
+
 ### Transactions
+
+#### GET
+
+Returns a list of all transactions
+
+##### Example
+
+> GET /api/transactions
+  
+Response:
+
+```json
+{
+  "transactions": [
+    {
+      "_id": "5546a465acfe54e7b13ab239",
+      "value": 1934.25,
+      "type": "buy",
+      "shares": 15,
+      "price": 128.95,
+      "portfolio": "554593cfff677a27261b8abb",
+      "__v": 0,
+      "close": "2015-05-03T22:42:45.355Z",
+      "stock": [
+        {
+          "name": "Apple Inc.",
+          "ticker": "AAPL",
+          "exchange": "NASDAQ"
+        }
+      ]
+    },
+    
+    ...
+  ]
+}
+```
+
+#### GET
+
+Returns a list of all transactions of a portfolio
+
+##### Example
+
+> GET /api/portfolios/:pq/transactions
+
+`:pq` can either be a portfolio's `slug` or `_id`.
+
+Response:
+
+```json
+{
+  "transactions": [
+    {
+      "_id": "5546a465acfe54e7b13ab239",
+      "value": 1934.25,
+      "type": "buy",
+      "shares": 15,
+      "price": 128.95,
+      "portfolio": "554593cfff677a27261b8abb",
+      "__v": 0,
+      "close": "2015-05-03T22:42:45.355Z",
+      "stock": [
+        {
+          "name": "Apple Inc.",
+          "ticker": "AAPL",
+          "exchange": "NASDAQ"
+        }
+      ]
+    },
+    {
+      "_id": "5546a87bacfe54e7b13ab23b",
+      "value": 1605.45,
+      "type": "buy",
+      "shares": 33,
+      "price": 48.65,
+      "portfolio": "554593cfff677a27261b8abb",
+      "__v": 0,
+      "close": "2015-05-03T23:00:11.475Z",
+      "stock": [
+        {
+          "name": "Microsoft Corporation",
+          "ticker": "MSFT",
+          "exchange": "NASDAQ"
+        }
+      ]
+    }
+  ]
+}
+```
+
+#### GET
+
+Returns a single transaction
+
+##### Example
+
+> GET /api/transactions/:id
+
+Response:
+
+```json
+{
+    "transaction": {
+      "_id": "5546a5fbacfe54e7b13ab23a",
+      "value": 1556.8,
+      "type": "buy",
+      "shares": 32,
+      "price": 48.65,
+      "portfolio": "554593cfff677a27261b8abb",
+      "__v": 0,
+      "close": "2015-05-03T22:49:31.556Z",
+      "stock": [
+        {
+          "name": "Microsoft Corporation",
+          "ticker": "MSFT",
+          "exchange": "NASDAQ"
+        }
+      ]
+    }
+  }
+}
+```
