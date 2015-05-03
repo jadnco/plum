@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var query = require('../functions').query;
 
 /**
 * -- Portfolio ---------->
@@ -15,9 +16,11 @@ router.route('/portfolios')
     portfolios.getAll(req, res);
   });
 
-router.route('/portfolios/:id')
+router.route('/portfolios/:q')
   .get(function(req, res) {
-    portfolios.get(req, res, req.params.id);
+    var _query = query(req.params.q, {slug: req.params.q});
+
+    portfolios.get(req, res, _query);
   })
   .put(function(req, res) {
     portfolios.update(req, res, req.params.id);
@@ -25,6 +28,14 @@ router.route('/portfolios/:id')
   .delete(function(req, res) {
     portfolios.delete(req, res, req.params.id);
   });
+
+// Get all portfolios of user
+router.route('/users/:uq/portfolios')
+  .get(function(req, res) {
+    var _query = query(req.params.uq, {username: req.params.uq});
+
+    portfolios.getByQuery(req, res, _query);
+  })
 
 /**
 * -- User ---------->
@@ -43,13 +54,9 @@ router.route('/users')
 // Single Portfolio route
 router.route('/users/:q')
   .get(function(req, res) {
-    var query = {$or: [{username: req.params.q}]};
+    var _query = query(req.params.q, {username: req.params.q});
 
-    if (req.params.q.match(/^[0-9a-fA-F]{24}$/)) {
-      query.$or.push({_id: req.params.q});
-    }
-
-    users.get(req, res, query);
+    users.get(req, res, _query);
   })
   .put(function(req, res) {
     users.update(req, res, req.params.q);

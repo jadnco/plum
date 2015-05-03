@@ -1,8 +1,26 @@
-<div class="container">
-  <ul>
-    <li>{{#link-to 'portfolios'}}Portfolios{{/link-to}}</li>
-    <li>{{#link-to 'users'}}Users{{/link-to}}</li>
-  </ul>
-  <br>
+<header id="main-header">
+  <div class="inner">
+    <div class="row">
+    <div class="seven columns">
+      <a href="#" class="logo">Plum</a>
+    </div>
+      <div class="five columns">
+        <nav id="main-nav">
+          <ul>
+            <li>{{#link-to "portfolios"}}Portfolios{{/link-to}}</li>
+            <li>{{#link-to "users"}}Users{{/link-to}}</li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
   {{outlet}}
-</div>
+
+<footer id="main-footer">
+  <div class="inner">
+    <div class="row">
+      
+    </div>
+  </div>
+</footer>

@@ -1,9 +1,13 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var slugify = require('../functions').slugify;
 
 var PortfolioSchema = new Schema({
   name: String,
-  slug: String,
+  slug: {
+    type: String,
+    unique: true
+  },
   value: Number,
   cash: Number,
   overallReturn: Number,
@@ -19,6 +23,12 @@ var PortfolioSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Transcation'
   }] */
+});
+
+PortfolioSchema.pre('save', function(next) {
+  this.slug = slugify(this.name);
+
+  next();
 });
 
 module.exports = mongoose.model('Portfolio', PortfolioSchema);

@@ -1,8 +1,5 @@
-* {
-  //margin: 0;
-  //padding: 0;
-}
+@import "base/variables";
+@import "base/functions";
+@import "base/grid";
 
-body {
-  font-family: sans-serif;
-}
+@import "base/base";

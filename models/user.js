@@ -10,7 +10,11 @@ var UserSchema = new Schema({
   created: {
     type: Date,
     default: Date.now
-  }
+  },
+  portfolios: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Portfolio'
+  }] 
 });
 
 module.exports = mongoose.model('User', UserSchema);
