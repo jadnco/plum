@@ -276,23 +276,22 @@ Response:
 
 ```json
 {
-    "transaction": {
-      "_id": "5546a5fbacfe54e7b13ab23a",
-      "value": 1556.8,
-      "type": "buy",
-      "shares": 32,
-      "price": 48.65,
-      "portfolio": "554593cfff677a27261b8abb",
-      "__v": 0,
-      "close": "2015-05-03T22:49:31.556Z",
-      "stock": [
-        {
-          "name": "Microsoft Corporation",
-          "ticker": "MSFT",
-          "exchange": "NASDAQ"
-        }
-      ]
-    }
+  "transaction": {
+    "_id": "5546a5fbacfe54e7b13ab23a",
+    "value": 1556.8,
+    "type": "buy",
+    "shares": 32,
+    "price": 48.65,
+    "portfolio": "554593cfff677a27261b8abb",
+    "__v": 0,
+    "close": "2015-05-03T22:49:31.556Z",
+    "stock": [
+      {
+        "name": "Microsoft Corporation",
+        "ticker": "MSFT",
+        "exchange": "NASDAQ"
+      }
+    ]
   }
 }
 ```
