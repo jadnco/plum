@@ -8,6 +8,6 @@ var StockSchema = new Schema({
   ticker: String,
   // Trading exchange; eg. NYSE
   exchange: String
-});
+}, {_id: false});
 
-module.exports = mongoose.model('Stock', StockSchema);
+module.exports = StockSchema;

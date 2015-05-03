@@ -1,11 +1,9 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var Stock = require('./stock');
 
 var TransactionSchema = new Schema({
-  /*stock: {
-    type: Schema.Types.ObjectId,
-    ref: 'Stock'
-  },*/
+  stock: [Stock],
   // Buy, Sell or Dividend
   type: String,
   // Total shares bought
