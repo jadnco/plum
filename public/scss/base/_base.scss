@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  outline: 1px dashed rgba(#888, 0.1);
 }
 
 body {
@@ -10,10 +11,10 @@ body {
 
 #main-header {
   padding: 30px 0;
-  border-bottom: 1px solid color(grey);
+  border-bottom: 1px solid lighten(color(grey), 20%);
+  background: color(white);
 
   #main-nav {
-    float: right;
 
     ul {
       list-style: none;
@@ -23,5 +24,9 @@ body {
         margin: 0 10px;
       }
     }
+  }
+
+  #main-search {
+    float: right;
   }
 }
