@@ -1,3 +1,6 @@
 Plum.QuoteSerializer = DS.RESTSerializer.extend({
-  primaryKey: 'symbol'
+  primaryKey: 'symbol',
+  normalizePayload: function(payload) {
+    return  {quote: [payload.query.results.quote]};
+  }
 });

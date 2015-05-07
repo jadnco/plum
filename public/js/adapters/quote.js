@@ -2,8 +2,21 @@ Plum.QuoteAdapter = DS.RESTAdapter.extend({
   host: 'http://query.yahooapis.com',
   namespace: 'v1/public',
   buildURL: function(type, id) {
-    type = !1;
-    var url = this._super(type, id);
+    var url = [];
+    var host = this.get('host');
+    var prefix = this.urlPrefix();
+
+    url.push(id);
+
+    console.log(id);
+
+    if (prefix) { url.unshift(prefix); }
+
+    url = url.join('/');
+    if (!host && url) { url = '/' + url; }
+
+    console.log(url);
+
     return url;
   }
 });

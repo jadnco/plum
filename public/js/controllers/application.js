@@ -1,1 +1,2 @@
-application.js
+Plum.ApplicationController = Ember.ArrayController.extend({
+});
