@@ -11,9 +11,6 @@ Plum.QuoteRoute = Ember.Route.extend({
     return this.store.find('quote', url);
   },
   setupController: function(controller, quote) {
-    console.log(quote);
     controller.set('model', quote);
-    controller.set('model.ticker', quote.Symbol);
-
   }
 });

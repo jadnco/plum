@@ -1,9 +1,9 @@
 Plum.QuoteController = Ember.ObjectController.extend({
   ticker: function () {
-    return this.get('id');
+    return this.get('id').toUpperCase();
   }.property('ticker'),
-  formattedPrice: function () {
-    var price = this.get('Ask'),
+  price: function() {
+    var price = this.get('LastTradePriceOnly'),
       formatted = parseFloat(price, 10).toFixed(2);
 
     return '$' + formatted;
