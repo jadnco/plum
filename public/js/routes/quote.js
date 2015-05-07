@@ -9,5 +9,11 @@ Plum.QuoteRoute = Ember.Route.extend({
     url += '&format=json&env=http%3A%2F%2Fdatatables.org%2Falltables.env&callback=';
     
     return this.store.find('quote', url);
+  },
+  setupController: function(controller, quote) {
+    console.log(quote);
+    controller.set('model', quote);
+    controller.set('model.ticker', quote.Symbol);
+
   }
 });

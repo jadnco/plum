@@ -1,5 +1,5 @@
 Plum.Quote = DS.Model.extend({
-  Symbol: DS.attr(),
+  ticker: DS.attr(),
   AverageDailyVolume: DS.attr(),
   Change: DS.attr(),
   DaysLow: DS.attr(),
@@ -11,5 +11,6 @@ Plum.Quote = DS.Model.extend({
   DaysRange: DS.attr(),
   Name: DS.attr(),
   Volume: DS.attr(),
-  StockExchange: DS.attr()
+  StockExchange: DS.attr(),
+  Ask: DS.attr()
 });

@@ -6,5 +6,5 @@ Plum.Portfolio = DS.Model.extend({
   overallReturn: DS.attr(),
   created: DS.attr(),
   owner: DS.belongsTo('user'),
-  transcations: DS.hasMany('transacation')
+  transactions: DS.hasMany('transaction')
 });

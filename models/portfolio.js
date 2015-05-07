@@ -31,4 +31,15 @@ PortfolioSchema.pre('save', function(next) {
   next();
 });
 
+PortfolioSchema.pre('remove', function(next) {
+  // Remove portfolio reference from related user
+  this.model('User').update(
+    {_id: this.owner},
+    {$pull: {portfolios: this._id}},
+    next
+  );
+
+  // TODO: delete all transactions
+});
+
 module.exports = mongoose.model('Portfolio', PortfolioSchema);

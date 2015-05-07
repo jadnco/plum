@@ -8,14 +8,10 @@ Plum.QuoteAdapter = DS.RESTAdapter.extend({
 
     url.push(id);
 
-    console.log(id);
-
     if (prefix) { url.unshift(prefix); }
 
     url = url.join('/');
     if (!host && url) { url = '/' + url; }
-
-    console.log(url);
 
     return url;
   }

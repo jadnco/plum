@@ -43,6 +43,8 @@ module.exports.delete = function(req, res, id) {
   User.findByIdAndRemove(id, function(err) {
     if (err) res.send(err);
 
+    // TODO: Delete all portfolios
+
     // Record no longer exists
     res.sendStatus(200);
   });
