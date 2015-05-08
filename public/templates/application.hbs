@@ -19,9 +19,9 @@
           {{input placholder='Searh Ticker'}}
           <div id="search-results">
             <ul>
-              <li>AAPL - Apple Inc.</li>
-              <li>BA - Boeing Co</li>
-              <li>TSLA - Tesla Motors</li>
+              <li>{{#link-to 'quote' 'AAPL'}}AAPL - Apple Inc.{{/link-to}}</li>
+              <li>{{#link-to 'quote' 'BA'}}BA - Boeing Co{{/link-to}}</li>
+              <li>{{#link-to 'quote' 'TSLA'}}TSLA - Tesla Motors{{/link-to}}</li>
             </ul>
           </div>
         </div>
