@@ -7,5 +7,5 @@ Plum.QuoteController = Ember.ObjectController.extend({
       formatted = parseFloat(price, 10).toFixed(2);
 
     return '$' + formatted;
-  }.property('lastTradePriceOnly').volatile()
+  }.property('lastTradePriceOnly')
 });

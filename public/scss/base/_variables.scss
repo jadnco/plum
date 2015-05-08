@@ -1,8 +1,15 @@
-$ws-large: 0.5rem;
-
 $colors: (    
-  white: #F5FDFF,
-  light: #EDF6F9,
-  grey: #a7b4b7,
-  black: #434748
+  white: #F9FCFF,
+  light: #EDEDED,
+  grey: #A0999E,
+  black: #302D2F,
+  plum: #8E4585,
+  green: #286944,
+  red: #7A3236
+);
+
+$whitespace: (
+  large: 2rem,
+  medium: 1.2rem,
+  small: 0.4rem
 );

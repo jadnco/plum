@@ -17,7 +17,7 @@
   box-sizing: border-box; }
 .column:not(:first-of-type),
 .columns:not(:first-of-type) {
-  margin-top: $ws-large;  
+  margin-top: ws(large);  
 }
 .column.center,
 .columns.center {

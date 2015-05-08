@@ -14,16 +14,17 @@
         </nav>
       </div>
 
-      <div class="four columns">
+      <div class="five columns">
         <div id="main-search">
-          {{input placholder='Searh Ticker'}}
           <div id="search-results">
             <ul>
-              <li>{{#link-to 'quote' 'AAPL'}}AAPL - Apple Inc.{{/link-to}}</li>
-              <li>{{#link-to 'quote' 'BA'}}BA - Boeing Co{{/link-to}}</li>
-              <li>{{#link-to 'quote' 'TSLA'}}TSLA - Tesla Motors{{/link-to}}</li>
+              <li>{{#link-to 'quote' 'AAPL'}}AAPL{{/link-to}}</li>
+              <li>{{#link-to 'quote' 'NFLX'}}NFLX{{/link-to}}</li>
+              <li>{{#link-to 'quote' 'BA'}}BA{{/link-to}}</li>
+              <li>{{#link-to 'quote' 'TSLA'}}TSLA{{/link-to}}</li>
             </ul>
           </div>
+          {{input placholder='Searh Ticker'}}
         </div>
       </div>
     </div>
@@ -34,7 +35,12 @@
 <footer id="main-footer">
   <div class="inner">
     <div class="row">
-      
+      <div class="six columns">
+        <div class="copyright">Copyright &copy; 2015. All rights reserved.</div>
+      </div>
+      <div class="six columns">
+        <div class="author">Created by <a href="http://jadn.co">Jaden Dessureault.</a></div>
+      </div>
     </div>
   </div>
 </footer>

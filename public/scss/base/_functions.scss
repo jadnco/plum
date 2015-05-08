@@ -1,3 +1,7 @@
 @function color($color) {
   @return map-get($colors, $color);
 }
+
+@function ws($ws) {
+  @return map-get($whitespace, $ws);
+}
