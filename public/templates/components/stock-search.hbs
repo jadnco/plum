@@ -1,0 +1,10 @@
+<div id="main-search">
+  {{input placholder='Searh Ticker' search='search' valueBinding='term' role='search'}}
+  <div id="search-results">
+    <ul>
+      {{! #each}}
+      <li>{{! ticker}} - {{! name}}{{term}}</li>
+      {{! /each}}
+    </ul>
+  </div>
+</div>

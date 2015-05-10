@@ -43,14 +43,10 @@ a {
     }
   }
 
-  #main-search {
-    float: right;
-
-    #search-results {
-      display: inline-block;
-      margin-right: 30px;
-    }
-
+  #quick-links {
+    display: inline-block;
+    margin-right: 30px;
+    
     ul {
       li {
         display: inline-block;
@@ -58,6 +54,30 @@ a {
         &:not(:last-of-type):after {
           content: '|';
           margin: 0 10px;
+        }
+      }
+    }
+  }
+
+  #main-search {
+    float: right;
+    width: 100%;
+
+    input {
+      padding: 5px;
+    }
+
+    #search-results {
+      ul {
+        list-style: none;
+        
+        li {
+          padding: 4px 10px;
+          background: color(light);
+
+          &:nth-of-type(even) {
+            background: color(grey);
+          }
         }
       }
     }

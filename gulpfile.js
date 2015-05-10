@@ -23,15 +23,15 @@ gulp.task('styles', function() {
 });
 
 gulp.task('templates', function() {
-  gulp.src('public/templates/*.hbs')
+  gulp.src('public/templates/**/*.hbs')
   .pipe(templateCompiler())
   .pipe(concat('templates.js'))
   .pipe(gulp.dest('public/js/'));
 });
 
 gulp.task('watch', function() {
-  gulp.watch('public/scss/**', ['styles']);
-  gulp.watch('public/templates/*.hbs', ['templates']);
+  gulp.watch('public/scss/**/*.scss', ['styles']);
+  gulp.watch('public/templates/**/*.hbs', ['templates']);
 });
 
 gulp.task('default', ['templates', 'styles', 'watch', 'serve']);
