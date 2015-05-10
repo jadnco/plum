@@ -2,5 +2,6 @@
 todo/*
 node_modules/*
 npm-debug.log
-public/js/templates.js
+public/js/app/templates.js
+public/js/bundle.js
 public/css/main.css
