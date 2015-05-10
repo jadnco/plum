@@ -1,7 +1,7 @@
-Plum.ApplicationController = Ember.ArrayController.extend({
-  term: '',
+Plum.IndexController = Ember.ArrayController.extend({
+  search: '',
   actions: {
-    search: function() {
+    query: function() {
       //var term = this.get('term');
       console.log("you are searching from controller");
 
