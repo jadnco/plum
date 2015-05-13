@@ -2,9 +2,10 @@
   {{input placholder='Searh Ticker' valueBinding='term' role='search'}}
   <div id="search-results">
     <ul>
-      {{! #each}}
-      <li>{{! ticker}} - {{! name}}{{term}}</li>
-      {{! /each}}
+      <li>{{term}}</li>
+      {{#each stock in model}}
+      <li>{{stock.symbol}} - {{stock.name}}</li>
+      {{/each}}
     </ul>
   </div>
 </div>

@@ -23,7 +23,7 @@ app.get('/', function(req, res) {
   res.sendFile('index.html');
 });
 
-app.listen(3000);
+app.listen(process.env.port || 3000);
 console.log('<--------------- App is running ---------------->');
 
 // catch 404 and forward to error handler

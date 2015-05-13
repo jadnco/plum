@@ -3,6 +3,17 @@ var router = express.Router();
 var query = require('../functions').query;
 
 /**
+* -- Stocks ---------->
+*/
+
+var stocks = require('./api/stock');
+
+router.route('/stocks/')
+  .get(function(req, res) {
+    stocks.get(req, res, req.query.query);
+  });
+
+/**
 * -- Portfolio ---------->
 */
 

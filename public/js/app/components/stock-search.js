@@ -1,16 +1,11 @@
 Plum.StockSearchComponent = Ember.Component.extend({
   term: '',
-  actions: {
-    search: function() {
-      this.sendAction('action', this.get('term'));
-      console.log("the component action was called.");
-    }
-  },
+  s: function() {
+    Ember.run.debounce(this, this.search, 300);
+  }.observes('term'),
   search: function() {
-
     var term = this.get('term');
-    this.send('search');
 
-    console.log('You typing something in');
-  }.observes('term')
+    this.sendAction('action', term)
+  }
 });

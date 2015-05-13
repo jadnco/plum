@@ -4,6 +4,11 @@
   outline: 1px dashed rgba(#888, 0.1);
 }
 
+::selection {
+  background: color(black);
+  color: color(white);
+}
+
 body {
   font-family: sans-serif;
   background: color(white);
