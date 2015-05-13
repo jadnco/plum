@@ -1,11 +1,31 @@
 Plum.StockSearchComponent = Ember.Component.extend({
   term: '',
-  s: function() {
-    Ember.run.debounce(this, this.search, 300);
+  results: '',
+  isSearching: false,
+  didInsertElement: function() {
+    this.results = $('#search-results');
+  },
+  focusIn: function() {
+    this.results.show();
+  },
+  focusOut: function() {
+    this.results.hide();
+    console.log('FOCUSED OUT');
+  },
+  _search: function() {
+    Ember.run.debounce(this, this.search, 200);
   }.observes('term'),
   search: function() {
-    var term = this.get('term');
+    this.sendAction('action', this.get('term'));
+    this.set('isSearching', true);
+  },
+  actions: {
+    clearSearch: function() {
+      this.set('term', '');
+      this.set('isSearching', false);
+      this.set('stocks', '');
 
-    this.sendAction('action', term)
+      $('#main-search input').val('');
+    }
   }
 });

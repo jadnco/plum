@@ -2,6 +2,8 @@ var mongoose = require('mongoose');
 var http = require('http');
 
 module.exports.get = function(req, res, query) {
+  query = escape(query);
+
   var options = {
     host: 'd.yimg.com',
     path: '/autoc.finance.yahoo.com/autoc?callback=YAHOO.Finance.SymbolSuggest.ssCallback&query=' + query,
@@ -24,7 +26,7 @@ module.exports.get = function(req, res, query) {
         // Remove JSONP padding
         var _s = body.indexOf('({');
         var _e = body.indexOf('})');
-        
+
         stocks = JSON.parse(body.substring(_s + 1, _e + 1));
       }
 

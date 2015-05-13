@@ -1,10 +1,13 @@
 <div id="main-search">
   {{input placholder='Searh Ticker' valueBinding='term' role='search'}}
-  <div id="search-results">
-    <ul>
-      {{#each stock in stocks}}
-        <li>{{#link-to 'quote' stock.id}}{{stock.id}} - {{stock.name}} - {{stock.exchange}}{{/link-to}}</li>
-      {{/each}}
-    </ul>
-  </div>
+  
+    <div id="search-results">
+      {{#if isSearching}}
+        <ul>
+          {{#each stock in stocks}}
+            <li><span {{action clearSearch}}>{{#link-to 'quote' stock.id bubbles=true}}{{stock.id}} - {{stock.name}} - {{stock.exchange}}{{/link-to}}</span></li>
+          {{/each}}
+        </ul>
+      {{/if}}
+    </div>
 </div>
