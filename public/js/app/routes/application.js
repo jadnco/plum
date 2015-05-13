@@ -1,15 +1,15 @@
 Plum.ApplicationRoute = Ember.Route.extend({
   actions: {
     search: function(term) {
-      console.log("calling search action from route: " + term);
-
       if (term) {
-        //this.set('isSearching', true);
+        this.set('isSearching', true);
         var self = this;
 
-        this.store.find('stock', {query: term}).then(function(results) {
-          self.set('model', results);
+        self.controller.store.find('stock', {query: term}).then(function(results) {
+          self.controller.set('model', results);
         });
+      } else {
+        this.set('isSearching', false);
       }
     },
     error: function(err) {

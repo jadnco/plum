@@ -2,9 +2,8 @@
   {{input placholder='Searh Ticker' valueBinding='term' role='search'}}
   <div id="search-results">
     <ul>
-      <li>{{term}}</li>
-      {{#each stock in model}}
-      <li>{{stock.symbol}} - {{stock.name}}</li>
+      {{#each stock in stocks}}
+        <li>{{#link-to 'quote' stock.id}}{{stock.id}} - {{stock.name}} - {{stock.exchange}}{{/link-to}}</li>
       {{/each}}
     </ul>
   </div>

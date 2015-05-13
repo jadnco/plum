@@ -1,9 +1,11 @@
 Plum.ApplicationSerializer = DS.RESTSerializer.extend({
+  primaryKey: 'symbol',
   attrs: {
-    ticker: 'symbol',
+    //ticker: 'id',
     exchange: 'exchDisp'
   },
   normalizePayload: function(payload) {
-    return {stocks: payload.ResultSet.Result};
+    console.log({stocks: [payload.ResultSet.Result][0]});
+    return {stocks: [payload.ResultSet.Result][0]};
   }
 });
