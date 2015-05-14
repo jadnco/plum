@@ -1,7 +1,7 @@
 * {
   margin: 0;
   padding: 0;
-  outline: 1px dashed rgba(#888, 0.1);
+  //outline: 1px dashed rgba(#888, 0.3);
 }
 
 ::selection {
@@ -10,7 +10,7 @@
 }
 
 body {
-  font-family: sans-serif;
+  font: fs(default) sans-serif;
   background: color(white);
   color: color(black);
 }
@@ -24,70 +24,12 @@ a {
   }
 }
 
-#main-footer {
-  .author {
-    float: right;
-  }
-}
-
-#main-header {
-  .inner {
-    padding: ws(large) 0;
-    border-bottom: 1px solid color(light);
-  }
-
-  #main-nav {
-
-    ul {
-      list-style: none;
-
-      li {
-        display: inline-block;
-        margin: 0 10px;
-      }
-    }
-  }
-
-  #quick-links {
-    display: inline-block;
-    margin-right: 30px;
-    
-    ul {
-      li {
-        display: inline-block;
-
-        &:not(:last-of-type):after {
-          content: '|';
-          margin: 0 10px;
-        }
-      }
-    }
-  }
-
-  #main-search {
-    float: right;
-    width: 100%;
-    position: relative;
-
-    input {
-      padding: 5px;
-    }
-
-    #search-results {
-      ul {
-        list-style: none;
-        position: absolute;
-        
-        li {
-          padding: 4px 10px;
-          background: color(light);
-
-          &:nth-of-type(even) {
-            background: color(grey);
-          }
-        }
-      }
-    }
+.cf {
+  &:after {
+    content: '';
+    display: table;
+    height: 0;
+    visibility: hidden;
   }
 }
 

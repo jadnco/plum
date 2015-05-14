@@ -5,3 +5,7 @@
 @function ws($ws) {
   @return map-get($whitespace, $ws);
 }
+
+@function fs($fs) {
+  @return map-get($font-size, $fs);
+}

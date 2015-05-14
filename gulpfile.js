@@ -21,7 +21,7 @@ gulp.task('styles', function() {
     .pipe(autoprefixer('last 2 versions'))
     .on('error', util.log)
     .pipe(gulp.dest('public/css/'))
-    //.pipe(browserSync.reload({stream: true}))
+    .pipe(browserSync.reload({stream: true}))
 });
 
 gulp.task('scripts', function() {
@@ -46,4 +46,4 @@ gulp.task('watch', function() {
   gulp.watch('public/js/**/*.js', ['scripts']);
 });
 
-gulp.task('default', ['templates', 'styles', 'watch', 'scripts']);
+gulp.task('default', ['templates', 'styles', 'watch', 'serve', 'scripts']);

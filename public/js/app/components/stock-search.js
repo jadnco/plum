@@ -6,11 +6,12 @@ Plum.StockSearchComponent = Ember.Component.extend({
     this.results = $('#search-results');
   },
   focusIn: function() {
-    this.results.show();
+    this.results.toggleClass('slide-in');
+    this.results.removeClass('slide-out');
   },
   focusOut: function() {
-    this.results.hide();
-    console.log('FOCUSED OUT');
+    this.results.toggleClass('slide-out');
+    this.results.removeClass('slide-in');
   },
   _search: function() {
     Ember.run.debounce(this, this.search, 200);
