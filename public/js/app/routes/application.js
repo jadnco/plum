@@ -1,5 +1,8 @@
-Plum.ApplicationRoute = Ember.Route.extend({
+Plum.ApplicationRoute = Ember.Route.extend(SimpleAuth.ApplicationRouteMixin, {
   actions: {
+    invalidateSession: function() {
+      this.get('session').invalidate();
+    },
     search: function(term) {
       var self = this;
 

@@ -1,7 +1,10 @@
 Plum.Router.map(function() {
-  this.resource('portfolios')/*, {path: '/:username/portfolios'}, function() {
+  this.resource('portfolios'),/*, {path: '/:username/portfolios'}, function() {
     this.resource('portfolio', {path: '/:slug'});
   }); */
+
+  this.route('login');
+  this.route('protected');
 
   this.route('user', {path: 'u/:username'}),
   this.route('quote', {path: 'q/:ticker'}),

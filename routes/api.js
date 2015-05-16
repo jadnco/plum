@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var query = require('../functions').query;
+var passport = require('passport');
 
 /**
 * -- Stocks ---------->
@@ -107,6 +108,32 @@ router.route('/users/:q')
   })
   .delete(function(req, res) {
     users.delete(req, res, req.params.q);
+  });
+
+/**
+* -- Login ---------->
+*/
+
+router.route('/login')
+  .post(function(req, res, next) {
+    passport.authenticate('local', function(err, user, info) {
+      if (err) return next(err);
+
+      console.log(user);
+
+      if (!user) {
+        console.log(req.session);
+        //req.session.messages = [info.message];
+
+        return res.json({message: 'Login failed'});
+      }
+
+      req.logIn(user, function(err) {
+        if (err) return next(err);
+
+        return res.json({message: 'Login success'});
+      });
+    })(req, res, next);
   });
 
 module.exports = router;
