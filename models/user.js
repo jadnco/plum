@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var bcrypt = require('bcrypt');
+var colors = require('colors');
 
 var UserSchema = new Schema({
   name: String,
@@ -44,8 +45,13 @@ UserSchema.pre('save', function(next) {
   });
 });
 
-UserSchema.methods.comparePassword = function(pass, cb) {
-  bcrypt.compare(pass, this.password, function(err, matches) {
+UserSchema.methods.compare = function(pass, cb) {
+  console.log('---- PASS COMPARE ----'.bgYellow.black);
+  var user = this;
+
+  bcrypt.compare(pass, user.password, function(err, matches) {
+    console.log(pass);
+    console.log(user.password);
     if (err) return cb(err);
 
     cb(null, matches);

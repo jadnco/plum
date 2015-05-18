@@ -1,7 +1,8 @@
 <h1>Login</h1>
 
 <form {{action 'authenticate' on='submit'}}>
-  {{input value=identification placeholder='Username'}}
+  {{input value=identification placeholder='Username' type='text'}}
   {{input value=password placeholder='Password' type='password'}}
-  {{input value='Submit' type='submit'}}
+  {{input value='Login' type='submit'}}
+  {{indentification}}
 </form>

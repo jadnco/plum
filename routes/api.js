@@ -114,26 +114,26 @@ router.route('/users/:q')
 * -- Login ---------->
 */
 
-router.route('/login')
-  .post(function(req, res, next) {
-    passport.authenticate('local', function(err, user, info) {
-      if (err) return next(err);
+// router.route('/login')
+//   .post(function(req, res, next) {
+//     passport.authenticate('local', function(err, user, info) {
+//       if (err) return next(err);
 
-      console.log(user);
+//       console.log(user);
 
-      if (!user) {
-        console.log(req.session);
-        //req.session.messages = [info.message];
+//       if (!user) {
+//         console.log(req.session);
+//         //req.session.messages = [info.message];
 
-        return res.json({message: 'Login failed'});
-      }
+//         return res.json({message: 'Login failed'});
+//       }
 
-      req.logIn(user, function(err) {
-        if (err) return next(err);
+//       req.logIn(user, function(err) {
+//         if (err) return next(err);
 
-        return res.json({message: 'Login success'});
-      });
-    })(req, res, next);
-  });
+//         return res.json({message: 'Login success'});
+//       });
+//     })(req, res, next);
+//   });
 
 module.exports = router;

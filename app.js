@@ -4,12 +4,18 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var passport = require('passport');
 var session = require('express-session');
-var LocalStrategy = require('passport-local').Strategy;
+var BearerStrategy = require('passport-http-bearer').Strategy;
+var outh2orize = require('oauth2orize');
+
+var colors = require('colors');
 
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017');
 
 var app = express();
+
+// Initialize OAuth 2.0 server
+var oauthServer = outh2orize.createServer();
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
@@ -23,27 +29,51 @@ app.set('view engine', 'jade');
 
 app.use('/api', api);
 
+// Express session initialization
 app.use(session({
   secret: process.env.SESSION_SECRET || 'yolo',
   resave: false,
   saveUninitialized: true
 }));
 
+// Passport session initialization
 app.use(passport.initialize());
-app.use(passport.session())
+app.use(passport.session());
 
-app.use('/', express.static(__dirname + '/public'));
-
-app.get('/', function(req, res) {
-  res.sendFile('index.html');
-});
-
-
-
+// Import User mongoose model
 var User = require('./models/user');
 
+/*passport.use(new LocalStrategy(function(username, password, done) {
+  User.findOne({username: username}, function(err, user) {
+    if (err) return done(err);
+ 
+    if (!user) {
+      console.log('no user found');
+    } else {
+      console.log('found user: ' + user);
+    }
 
-passport.serializeUser(function(user, done) {
+    // No user object found
+    if (!user) {
+      return done(null, false, {message: 'Unkown user ' + username});
+    }
+
+    // Compare password to hashed value in database
+    user.compare(password, function(err, matches) {
+      if (err) return done(err);
+
+      if (matches) {
+        // Validation success; Send user object
+        return done(null, user);
+      } else {
+        // Validation did not pass; don't send user, send message
+        return done(null, false, {message: 'Invalid password'});
+      }
+    });
+  });
+})); */
+
+/* passport.serializeUser(function(user, done) {
   done(null, user.id);
 });
 
@@ -51,32 +81,60 @@ passport.deserializeUser(function(id, done) {
   User.findById(id, function(err, user) {
     done(err, user);
   });
-});
+}); */
 
-passport.use(new LocalStrategy(function(username, pass, done) {
-  User.find({username: username}, function(err, user) {
+passport.use(new BearerStrategy(function(username, password, done) {
+  User.findOne({username: username}, function(err, user) {
     if (err) return done(err);
+ 
+    if (!user) {
+      console.log('no user found');
+    } else {
+      console.log('found user: ' + user);
+    }
 
-    console.log('found user: ' + username);
-
+    // No user object found
     if (!user) {
       return done(null, false, {message: 'Unkown user ' + username});
     }
 
-    user.comparePassword(pass, function(err, matches) {
+    // Compare password to hashed value in database
+    user.compare(password, function(err, matches) {
       if (err) return done(err);
 
       if (matches) {
+        // Validation success; Send user object
         return done(null, user);
       } else {
+        // Validation did not pass; don't send user, send message
         return done(null, false, {message: 'Invalid password'});
       }
     });
   });
 }));
 
+app.use('/', express.static(__dirname + '/public'));
+
+app.get('/', function(req, res) {
+  res.send({
+    isAuthenticated: req.isAuthenticated(),
+    user: req.user
+  });
+});
+
+app.post('/token', passport.authenticate('bearer'), function(req, res) {
+  // Redirect on user login success
+  console.log('Login success!'.bgGreen.black);
+  
+  res.json({
+    username: req.user.username,
+    name: req.user.name
+  });
+  //res.redirect('/');
+});
+
 app.listen(process.env.port || 3000);
-console.log('<--------------- App is running ---------------->');
+console.log('<--------------- App is running ---------------->'.bgRed.yellow);
 
 // catch 404 and forward to error handler
 /*app.use(function(req, res, next) {

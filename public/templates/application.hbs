@@ -10,6 +10,14 @@
           <ul>
             <li>{{#link-to "portfolios"}}Portfolios{{/link-to}}</li>
             <li>{{#link-to "users"}}Users{{/link-to}}</li>
+            <li>{{#link-to "protected"}}Protected{{/link-to}}</li>
+
+            {{#if session.isAuthenticated}}
+              <li>{{session.username}}</li>
+              <li><a {{action 'invalidateSession'}}>Logout</a></li>
+            {{else}}
+              <li>{{#link-to 'login'}}Login{{/link-to}}</li>
+            {{/if}}
           </ul>
         </nav>
       </div>

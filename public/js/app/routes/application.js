@@ -3,6 +3,10 @@ Plum.ApplicationRoute = Ember.Route.extend(SimpleAuth.ApplicationRouteMixin, {
     invalidateSession: function() {
       this.get('session').invalidate();
     },
+    sessionAuthenticationSucceeded: function() {
+      console.log('login succeeded');
+      //this.transitionTo('users');
+    },
     search: function(term) {
       var self = this;
 
