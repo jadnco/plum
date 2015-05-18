@@ -19,13 +19,13 @@ router.route('/stocks/')
 
 var portfolios = require('./api/portfolio');
 
-router.route('/portfolios')
-  .post(function(req, res) {
-    portfolios.add(req, res);
-  })
-  .get(function(req, res) {
-    portfolios.getAll(req, res);
-  });
+// router.route('/portfolios')
+//   .post(function(req, res) {
+//     portfolios.add(req, res);
+//   })
+//   .get(function(req, res) {
+//     portfolios.getAll(req, res);
+//   });
 
 router.route('/portfolios/:q')
   .get(function(req, res) {
@@ -41,9 +41,9 @@ router.route('/portfolios/:q')
   });
 
 // Get all portfolios of user
-router.route('/users/:uq/portfolios')
+router.route('/portfolios')
   .get(function(req, res) {
-    var _query = query(req.params.uq, {username: req.params.uq});
+    var _query = query(req.query.user, {username: req.query.user});
 
     portfolios.getByQuery(req, res, _query);
   })

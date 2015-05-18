@@ -1,10 +1,9 @@
 Plum.UserRoute = Ember.Route.extend({
   model: function(params) {
-    return this.store.find('user', params.username);
+    // Get model data for `currentUser`
+    return this.store.find('user', USER);
   },
   setupController: function(controller, user) {
     controller.set('model', user);
-    controller.set('model.username', user.id);
-    console.log(user);
   }
 });

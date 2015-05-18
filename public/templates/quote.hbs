@@ -6,6 +6,14 @@
           <div class="name">{{name}}</div>
           <div class="ticker">{{ticker}}</div>
           <div class="price">{{price}}</div>
+          
+          <select {{action 'addToPortfolio' on='change'}} class="add-to-portfolio">
+            <option selected disabled>Add to Portfolio</option>
+
+            {{#each portfolio in controllers.application.portfolios}}
+              <option {{bind-attr value=portfolio.name}}>{{portfolio.name}}</option>
+            {{/each}}
+          </select>
           <div class="graph"></div>
         </div>
 

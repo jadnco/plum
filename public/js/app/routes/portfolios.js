@@ -1,10 +1,8 @@
 Plum.PortfoliosRoute = Ember.Route.extend({
   model: function(params) {
-    console.log(currentUser.username);
-    return this.store.find('portfolios', params.username);
+    return this.store.find('portfolio', {user: USER});
   },
   setupController: function(controller, portfolios) {
-    console.log(portfolios);
-    controller.set('model', portfolios);
+    controller.set('content', portfolios);
   }
 });

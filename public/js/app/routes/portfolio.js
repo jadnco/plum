@@ -4,6 +4,5 @@ Plum.PortfolioRoute = Ember.Route.extend({
   },
   setupController: function(controller, portfolio) {
     controller.set('model', portfolio);
-    controller.set('slug', portfolio);
   }
 });

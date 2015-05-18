@@ -5,7 +5,7 @@ Plum.ApplicationRoute = Ember.Route.extend({
 
       if (term.length > 0) {
         self.controller.store.find('stock', {query: term}).then(function(results) {
-          self.controller.set('model', results);
+          self.controller.set('stocks', results);
         });
       }
     },
@@ -17,5 +17,9 @@ Plum.ApplicationRoute = Ember.Route.extend({
       this.transitionTo('/not-found');*/
       console.log("An error: " + err.message);
     }
+  },
+  setupController: function(controller, model) {
+    controller.set('user', this.store.find('user', USER));
+    controller.set('portfolios', this.store.find('portfolio', {user: USER}));
   }
 });

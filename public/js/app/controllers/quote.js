@@ -1,4 +1,5 @@
 Plum.QuoteController = Ember.ObjectController.extend({
+  needs: 'application',
   ticker: function () {
     return this.get('id').toUpperCase();
   }.property('id'),

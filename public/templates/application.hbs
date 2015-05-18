@@ -7,6 +7,7 @@
 
       <div class="five columns">
         <nav id="main-nav">
+        {{user.name}}
           <ul>
             <li>{{#link-to "portfolios"}}Portfolios{{/link-to}}</li>
             <li>{{#link-to "users"}}Users{{/link-to}}</li>
@@ -15,7 +16,7 @@
       </div>
 
       <div class="five columns">
-        {{stock-search stocks=model action='search'}}
+        {{stock-search stocks=stocks action='search'}}
       </div>
     </div>
   </div>
