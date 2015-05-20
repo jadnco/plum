@@ -8,7 +8,7 @@ var query = require('../functions').query;
 
 var stocks = require('./api/stock');
 
-router.route('/stocks/')
+router.route('/stocks')
   .get(function(req, res) {
     stocks.get(req, res, req.query.query);
   });
@@ -19,14 +19,6 @@ router.route('/stocks/')
 
 var portfolios = require('./api/portfolio');
 
-// router.route('/portfolios')
-//   .post(function(req, res) {
-//     portfolios.add(req, res);
-//   })
-//   .get(function(req, res) {
-//     portfolios.getAll(req, res);
-//   });
-
 router.route('/portfolios/:q')
   .get(function(req, res) {
     var _query = query(req.params.q, {slug: req.params.q});
@@ -34,18 +26,21 @@ router.route('/portfolios/:q')
     portfolios.get(req, res, _query);
   })
   .put(function(req, res) {
-    portfolios.update(req, res, req.params.id);
+    portfolios.update(req, res, req.params.q);
   })
   .delete(function(req, res) {
-    portfolios.delete(req, res, req.params.id);
+    portfolios.delete(req, res, req.params.q);
   });
 
-// Get all portfolios of user
+// Get all portfolios of a certain user
 router.route('/portfolios')
   .get(function(req, res) {
     var _query = query(req.query.user, {username: req.query.user});
 
     portfolios.getByQuery(req, res, _query);
+  })
+  .post(function(req, res) {
+    portfolios.add(req, res);
   })
 
 /**
@@ -58,9 +53,6 @@ router.route('/transactions')
   .post(function(req, res) {
     transactions.add(req, res);
   })
-  .get(function(req, res) {
-    transactions.getAll(req, res);
-  });
 
 router.route('/transactions/:id')
   .get(function(req, res) {
@@ -74,9 +66,9 @@ router.route('/transactions/:id')
   });
 
 // Get all transactions of portfolio
-router.route('/portfolios/:pq/transactions')
+router.route('/portfolios/:q/transactions')
   .get(function(req, res) {
-    var _query = query(req.params.pq, {slug: req.params.pq});
+    var _query = query(req.params.q, {slug: req.params.q});
 
     transactions.getByQuery(req, res, _query);
   })

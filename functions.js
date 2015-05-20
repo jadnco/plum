@@ -8,12 +8,14 @@ module.exports = {
       .replace(/-+$/, '');
   },
   query: function(id, q) {
-    var query = {$or: [q]};
+    if (id != undefined) {
+      var query = {$or: [q]};
 
-    if (id.match(/^[0-9a-fA-F]{24}$/)) {
-      query.$or.push({_id: id});
+      if (id.match(/^[0-9a-fA-F]{24}$/)) {
+        query.$or.push({_id: id});
+      }
     }
-
+    
     return query;
   }
 };

@@ -4,5 +4,7 @@ Plum.PortfolioRoute = Ember.Route.extend({
   },
   setupController: function(controller, portfolio) {
     controller.set('model', portfolio);
+    portfolio.get('transactions').reload();
+    portfolio.reload();
   }
 });

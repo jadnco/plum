@@ -54,6 +54,10 @@
       position: absolute;
       right: 0;
       top: 40px;
+      opacity: 0;
+      visibility: hidden;
+      transform: scale(.9) translateY(-50px);
+      transition: 0.2s cubic-bezier(.3, 0, 0, 1.3);
       
       li {
         padding: ws(small);
@@ -95,16 +99,10 @@
         }
       }
 
-      &.slide-in {
-        transition: all 0.2s;
+      &.visible {
+        transform: none;
         opacity: 1;
         visibility: visible;
-      }
-
-      &.slide-out {
-        transition: all 0.2s;
-        opacity: 0;
-        visibility: hidden;
       }
     }
   }

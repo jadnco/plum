@@ -1,2 +1,25 @@
-<div><b>Name:</b> {{name}}</div>
-<div><b>Value:</b> {{value}}</div>
+<h2>{{name}} ({{withCommas value}})</h2>
+
+{{#each transaction in transactions}}
+  Value: {{transaction.value}}<br>
+  Type: {{transaction.type}}<br>
+  Shares: {{transaction.shares}}<br>
+  Price: {{transaction.price}}<br><br>
+
+  <strong>Stock:</strong><br>
+  {{transaction.stock.length}}
+  {{transaction.stock}}
+
+  {{#each stock in stock}}
+    {{stock.ticker}}
+    {{stock.exchange}}
+  {{/each}}
+  {{!#with transaction.stock.0}}
+    Name: {{!name}}<br>
+    Ticker: {{!ticker}}<br>
+    Exchange: {{!exchange}}<br>
+  {{!/with}}
+
+  <br><hr><br>
+  
+{{/each}}

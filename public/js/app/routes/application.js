@@ -20,6 +20,5 @@ Plum.ApplicationRoute = Ember.Route.extend({
   },
   setupController: function(controller, model) {
     controller.set('user', this.store.find('user', USER));
-    controller.set('portfolios', this.store.find('portfolio', {user: USER}));
   }
 });

@@ -58,8 +58,14 @@ module.exports.update = function(req, res, id) {
 };
 
 module.exports.delete = function(req, res, id) {
-  Transaction.findByIdAndRemove(id, function(err) {
+  Transaction.findByIdAndRemove(id, function(err, transaction) {
     if (err) res.send(err);
+
+    // Delete reference from portfolio
+    Portfolio.findByIdAndUpdate(transaction.portfolio,
+      {$pull: {'transactions': transaction._id}}, function(err) {
+        if (err) res.send(err);
+      });
 
     // Record no longer exists
     res.sendStatus(200);

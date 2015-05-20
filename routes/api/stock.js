@@ -28,6 +28,22 @@ module.exports.get = function(req, res, query) {
         var _e = body.indexOf('})');
 
         stocks = JSON.parse(body.substring(_s + 1, _e + 1));
+
+        var results = stocks.ResultSet.Result;
+
+        // Loop through Result array
+        for (var i in results) {
+          // Create new key/value pairs
+          results[i].ticker = results[i].symbol;
+          results[i].exchange = results[i].exchDisp;
+
+          // Delete key/value pairs from object
+          delete results[i].symbol;
+          delete results[i].exch;
+          delete results[i].exchDisp;
+          delete results[i].type;
+          delete results[i].typeDisp;
+        };
       }
 
       res.json(stocks);

@@ -4,14 +4,15 @@ Plum.StockSearchComponent = Ember.Component.extend({
   isSearching: false,
   didInsertElement: function() {
     this.results = $('#search-results');
+    this.results.addClass('visible');
   },
   focusIn: function() {
-    this.results.toggleClass('slide-in');
-    this.results.removeClass('slide-out');
+    if (this.get('isSearching')) {
+      this.results.addClass('visible');
+    }
   },
   focusOut: function() {
-    this.results.toggleClass('slide-out');
-    this.results.removeClass('slide-in');
+    this.results.removeClass('visible');
   },
   _search: function() {
     Ember.run.debounce(this, this.search, 200);
@@ -19,6 +20,8 @@ Plum.StockSearchComponent = Ember.Component.extend({
   search: function() {
     this.sendAction('action', this.get('term'));
     this.set('isSearching', true);
+
+    this.results.addClass('visible');
   },
   actions: {
     clearSearch: function() {

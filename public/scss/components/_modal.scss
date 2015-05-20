@@ -1,0 +1,21 @@
+.modal {
+  position: fixed;
+  z-index: 999;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  margin: 0 auto;
+  padding: ws(large);
+  background: color(light);
+  border: 4px solid color(white);
+}
+
+.overlay {
+  position: fixed;
+  z-index: 998;
+  background: rgba(color(black), 0.8);
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
