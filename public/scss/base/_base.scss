@@ -1,7 +1,7 @@
 * {
   margin: 0;
   padding: 0;
-  //outline: 1px dashed rgba(#888, 0.3);
+  //outline: 1px dashed rgba(color(black), 0.2);
 }
 
 ::selection {
@@ -11,7 +11,7 @@
 
 body {
   font: font(default);
-  background: color(white);
+  background: color(pearl);
   color: color(black);
 }
 
@@ -34,4 +34,20 @@ a {
 
 .main-page {
   padding: ws(large) 0;
+}
+
+.btn {
+  font: inherit;
+  padding: ws(tiny) ws(medium);
+  border: 1px solid darken(color(light), 10%);
+  outline: none;
+  border-radius: 3px;
+  background: color(light);
+  cursor: pointer;
+  -webkit-appearance: none;
+  transition: 0.1s;
+
+  &:hover {
+    background: darken(color(light), 10%);
+  }
 }

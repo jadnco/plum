@@ -31,7 +31,7 @@ Ember.Handlebars.helper('currency', function(value, opts) {
 */
 Ember.Handlebars.helper('time', function(value, opts) {
   if (value != null) {
-    var val = value.toUpperCase();
+    var val = value.toString().toUpperCase();
 
     // Insert space in between number and capital letter
     val = val.replace(/([0-9])([A-Z])/g, '$1 $2');
@@ -39,5 +39,13 @@ Ember.Handlebars.helper('time', function(value, opts) {
     return val + ' EDT';
   }
 
+  return '--';
+});
+
+Ember.Handlebars.helper('firstLetter', function(value, opts) {
+  if (value != null) {
+    return value.toString().charAt(0).toUpperCase();
+  }
+  
   return '--';
 });

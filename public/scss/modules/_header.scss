@@ -1,10 +1,23 @@
 #main-header {
   position: relative;
+  line-height: 1;
 
   .inner {
     padding-top: ws(medium);
     padding-bottom: ws(medium);
     border-bottom: 1px solid color(light);
+  }
+
+  .logo {
+    display: block;
+    float: left;
+    margin-top: ws(tiny);
+    margin-right: ws(medium);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.2;
   }
 
   #loading {
@@ -21,6 +34,7 @@
   }
 
   #main-nav {
+    margin-top: ws(tiny);
 
     ul {
       list-style: none;
@@ -50,10 +64,12 @@
 
   #main-search {
     position: relative;
+    margin-top: 0 !important;
 
     input {
+      margin-top: 0 !important;
       font: inherit;
-      float: right;
+      float: left;
       padding: ws(tiny);
       border: 1px solid color(light);
       outline: none;
@@ -121,5 +137,20 @@
         visibility: visible;
       }
     }
+  }
+
+  .avatar {
+    margin-top: 0 !important;
+    height: 30px;
+    width: 30px;
+    padding: 6px;
+    text-align: center;
+    border: 1px solid color(light);
+    outline: none;
+    border-radius: 3px;
+    line-height: 1;
+    border-radius: ws(tiny) * 4;
+    box-sizing: border-box;
+    display: inline-block;
   }
 }

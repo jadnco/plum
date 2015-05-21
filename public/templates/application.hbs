@@ -1,9 +1,9 @@
 <header id="main-header">
   <div class="inner">
     <div class="row">
-
-      <div class="two columns">
+      <div class="four columns">
         <a href="#" class="logo">Plum</a>
+        {{stock-search stocks=stocks action='search'}}
       </div>
 
       <div class="five columns">
@@ -14,7 +14,9 @@
           </ul>
         </nav>
       </div>
-        {{stock-search stocks=stocks action='search'}}
+
+      <div class="three columns">
+        <div class="avatar">{{firstLetter user.id}}</div>
         {{user.id}}
       </div>
     </div>

@@ -19,7 +19,7 @@
 
           <div class="graph"></div>
           <div>{{time lastTradeTime}}</div>
-          <button {{action 'showPortfolioModal'}}>Add to portfolio</button>
+          
 
           {{!#modal-overlay}}
             Add <strong>{{ticker}}</strong> to a portfolio
@@ -42,6 +42,7 @@
         </div>
 
         <div class="three columns">
+          <button class="add-to-portfolio btn" {{action 'showPortfolioModal'}}>Add to portfolio</button>
           <div><b>Volume:</b> {{withCommas volume}}</div>
         </div>
       </div>

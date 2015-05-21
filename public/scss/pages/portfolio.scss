@@ -3,36 +3,56 @@
     border: 1px solid color(light);
     padding: ws(medium);
     border-radius: $border-radius;
+    text-align: center;
+    background: color(white);
 
     h3 {
-      margin-bottom: ws(medium);
+      float: left;
+      margin-top: 6px;
     }
 
-    table {
-      border-collapse: collapse;
-      text-align: left;
+    .new-transaction.btn {
+      float: right;
     }
 
     table {
       width: 100%;
-    }
+      border-collapse: collapse;
+      text-align: left;
+      margin-top: ws(medium);
+      display: inline-table;
+      clear: both;
 
-    th {
-      border-bottom: 1px solid color(light);
-      padding-bottom: ws(tiny);
-    }
-
-    tr:nth-of-type(2) {
-      td {
-        padding-top: ws(tiny);
+      th {
+        border-bottom: 1px solid color(light);
+        padding-bottom: ws(tiny);
       }
+
+      tr:nth-of-type(2) {
+        td {
+          padding-top: ws(tiny);
+        }
+      }
+
+      th:not(:first-of-type),
+      td:not(:first-of-type) {
+        text-align: right;
+      }
+
+
+      th:nth-of-type(2),
+      td:nth-of-type(2) {
+        text-align: left;
+        text-transform: capitalize;
+      } 
     }
 
-    th:nth-of-type(3),
-    td:nth-of-type(3),
-    th:nth-of-type(2),
-    td:nth-of-type(2) {
-      text-align: right;
+    .view-more {
+      display: inline-block;
+      text-align: center;
+      margin: 0 auto;
+      margin-top: ws(medium);
+      clear: both;
     }
   }
 }
