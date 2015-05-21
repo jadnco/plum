@@ -1,0 +1,21 @@
+#portfolios {
+  .row:not(:first-of-type) {
+    margin-top: ws(large);
+  }
+
+  #portfolio {
+    border: 1px solid color(light);
+    padding: ws(medium);
+    border-radius: $border-radius;
+
+    .name {
+      font: font(medium);
+      text-align: center;
+    }
+
+    .value {
+      text-align: center;
+      margin-top: ws(small);
+    }
+  }
+}

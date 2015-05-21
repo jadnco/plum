@@ -1,7 +1,14 @@
-<h3>Portfolios:</h3>
-
-{{#each portfolio in controller}}
-  <div><b>Title:</b> {{#link-to 'portfolio' portfolio.id}}{{portfolio.name}}{{/link-to}}</div>
-  <div><b>Value:</b> {{currency portfolio.value}}</div>
-  <br>
-{{/each}}
+<main id="portfolios">
+  <div class="inner">
+    {{#each row in rows}}
+      <div class="row">
+        {{#each portfolio in row}}
+          <article id="portfolio" class="four columns">
+            <div class="name">{{#link-to 'portfolio' portfolio.id}}{{portfolio.name}}{{/link-to}}</div>
+            <div class="value">{{currency portfolio.value}}</div>
+          </article>
+        {{/each}}
+      </div>
+    {{/each}}
+  </div>
+</main

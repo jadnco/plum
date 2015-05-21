@@ -6,6 +6,6 @@
   @return map-get($whitespace, $ws);
 }
 
-@function fs($fs) {
-  @return map-get($font-size, $fs);
+@function font($fs, $family: $font-family) {
+  @return #{map-get($font-size, $fs) + ' ' + $family};
 }

@@ -9,7 +9,7 @@ Ember.Handlebars.helper('withCommas', function(value, opts) {
     return parts.join(".");
   }
   
-  return value;
+  return '-';
 });
 
 /**
@@ -23,7 +23,7 @@ Ember.Handlebars.helper('currency', function(value, opts) {
     return '$' + parts.join(".");
   }
   
-  return value;
+  return '-';
 });
 
 /**
@@ -39,5 +39,5 @@ Ember.Handlebars.helper('time', function(value, opts) {
     return val + ' EDT';
   }
 
-  return value;
+  return '-';
 });
