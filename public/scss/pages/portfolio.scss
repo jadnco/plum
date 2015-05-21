@@ -1,0 +1,38 @@
+#portfolio {
+  #recent-transactions {
+    border: 1px solid color(light);
+    padding: ws(medium);
+    border-radius: $border-radius;
+
+    h3 {
+      margin-bottom: ws(medium);
+    }
+
+    table {
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    table {
+      width: 100%;
+    }
+
+    th {
+      border-bottom: 1px solid color(light);
+      padding-bottom: ws(tiny);
+    }
+
+    tr:nth-of-type(2) {
+      td {
+        padding-top: ws(tiny);
+      }
+    }
+
+    th:nth-of-type(3),
+    td:nth-of-type(3),
+    th:nth-of-type(2),
+    td:nth-of-type(2) {
+      text-align: right;
+    }
+  }
+}

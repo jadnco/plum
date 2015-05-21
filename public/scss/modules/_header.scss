@@ -58,6 +58,7 @@
       border: 1px solid color(light);
       outline: none;
       border-radius: 3px;
+      line-height: 1;
 
       &:focus {
         border-color: darken(color(light), 10%);

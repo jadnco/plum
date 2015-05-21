@@ -9,11 +9,12 @@
     border-radius: $border-radius;
 
     .name {
-      font: font(medium);
       text-align: center;
+      color: color(grey);
     }
 
     .value {
+      font: font(large);
       text-align: center;
       margin-top: ws(small);
     }

@@ -1,25 +1,38 @@
+<main id="portfolio">
 <h2>{{name}} - {{currency value}}</h2>
+  <div class="inner">
+    <div class="row">
+      <section id="recent-transactions" class="four columns">
+        <h3>Recent Transactions</h3>
+        <table>
+          <tr>
+            <th>Ticker</th>
+            <th>Shares</th>
+            <th>Value</th>
+          </tr>
+          {{#each transaction in transactions}}
+            <tr>
+              <td>AAPL</td>
+              <td>{{transaction.shares}}</td>
+              <td>{{transaction.value}}</td>
+              
+              {{!transaction.type}}
+              {{!transaction.shares}}
+              {{!transaction.price}}
+              {{!transaction.stock.length}}
+              {{!transaction.stock}}
 
-{{#each transaction in transactions}}
-  Value: {{transaction.value}}<br>
-  Type: {{transaction.type}}<br>
-  Shares: {{transaction.shares}}<br>
-  Price: {{transaction.price}}<br><br>
-
-  <strong>Stock:</strong><br>
-  {{transaction.stock.length}}
-  {{transaction.stock}}
-
-  {{#each stock in stock}}
-    {{stock.ticker}}
-    {{stock.exchange}}
-  {{/each}}
-  {{!#with transaction.stock.0}}
-    Name: {{!name}}<br>
-    Ticker: {{!ticker}}<br>
-    Exchange: {{!exchange}}<br>
-  {{!/with}}
-
-  <br><hr><br>
-  
-{{/each}}
+              {{!#each stock in stock}}
+                {{!stock.ticker}}
+                {{!stock.exchange}}
+              {{!/each}}
+              {{!#with transaction.stock.0}}
+                {{!name}}
+                {{!ticker}}
+                {{!exchange}}
+              {{!/with}}
+            </tr>
+          {{/each}}
+        </table>
+      <div>
+</main>
