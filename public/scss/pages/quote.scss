@@ -1,10 +1,60 @@
 #quote {
   .graph {
     height: 400px;
-    background: color(grey);
+    border: 1px solid color(light);
+    border-radius: 4px;
+    margin: ws(large) 0;
+  }
+
+  .price,
+  .ticker {
+    font: fs(large);
+  }
+
+  .ticker,
+  .name {
+    float: left;
+    //clear: none;
+  }
+
+  .price,
+  .change {
+    float: right;
+    //lear: none;
+  }
+
+  .name {
+    color: color(grey);
+  }
+
+  .change {
+    &.advance {
+      color: color(green);
+    }
+
+    &.decline {
+      color: color(red);
+    }
   }
 
   .price {
-    font-size: 48px;
+    .arrow {
+      width: 0; 
+      height: 0; 
+      display: inline-block;
+      float: left;
+      margin-top: 17px;
+      margin-right: ws(small);
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+
+      &.advance {
+        border-bottom: 15px solid color(green);
+      }
+
+      &.decline {
+        border-top: 15px solid color(red);
+      }
+    }
   }
 }

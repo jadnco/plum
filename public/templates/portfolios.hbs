@@ -2,6 +2,6 @@
 
 {{#each portfolio in controller}}
   <div><b>Title:</b> {{#link-to 'portfolio' portfolio.id}}{{portfolio.name}}{{/link-to}}</div>
-  <div><b>Value:</b> {{withCommas portfolio.value}}</div>
+  <div><b>Value:</b> {{currency portfolio.value}}</div>
   <br>
 {{/each}}

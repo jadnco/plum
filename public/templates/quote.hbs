@@ -3,22 +3,34 @@
     <div class="inner">
       <div class="row">
         <div class="nine columns">
-          <div class="name">{{name}}</div>
-          <div class="ticker">{{ticker}}</div>
-          <div class="price">{{price}}</div>
+          <div class="cf">
+            <div class="cf">
+              <div class="ticker">{{ticker}}</div>
+              <div class="price">
+                <span {{bind-attr class=':arrow ad'}}></span>
+                {{price}}
+              </div>
+            </div>
+            <div class="cf">
+              <div class="name">{{name}}</div>
+              <div {{bind-attr class=':change ad'}}>{{change}} ({{percentChange}})</div>
+            </div>
+          </div>
 
+          <div class="graph"></div>
+          <div>{{time lastTradeTime}}</div>
           <button {{action 'showPortfolioModal'}}>Add to portfolio</button>
 
-          {{#modal-overlay}}
+          {{!#modal-overlay}}
             Add <strong>{{ticker}}</strong> to a portfolio
-            {{view 'select'
+            {{!view 'select'
               content=controllers.application.portfolios
               optionLabelPath='content.name'
               optionValuePath='content.id'
               prompt='Add to portfolio'
               selection=selectedPortfolio
             }}
-          {{/modal-overlay}}
+          {{!/modal-overlay}}
           
           <select {{! action 'addToPortfolio' on='change'}} class="add-to-portfolio">
             <option selected disabled>Add to Portfolio</option>
@@ -27,7 +39,6 @@
               <option {{!bind-attr value=portfolio.name}}>{{!portfolio.name}}</option>
             {{!/each}}
           </select>
-          <div class="graph"></div>
         </div>
 
         <div class="three columns">

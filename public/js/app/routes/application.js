@@ -9,9 +9,6 @@ Plum.ApplicationRoute = Ember.Route.extend({
         });
       }
     },
-    loading: function() {
-      return true;
-    },
     error: function(err) {
       /*Plum.Logger.error(err);
       this.transitionTo('/not-found');*/
@@ -20,5 +17,6 @@ Plum.ApplicationRoute = Ember.Route.extend({
   },
   setupController: function(controller, model) {
     controller.set('user', this.store.find('user', USER));
+    controller.set('portfolios', this.store.find('portfolio', {user: USER}));
   }
 });

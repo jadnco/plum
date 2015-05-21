@@ -1,8 +1,23 @@
 #main-header {
+  position: relative;
+
   .inner {
     padding-top: ws(medium);
     padding-bottom: ws(medium);
     border-bottom: 1px solid color(light);
+  }
+
+  #loading {
+    position: absolute;
+    text-align: center;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    width: 32px;
+    height: 32px;
+    display: none;
+    top: 50%;
+    margin-top: -16px;
   }
 
   #main-nav {
@@ -56,7 +71,7 @@
       top: 40px;
       opacity: 0;
       visibility: hidden;
-      transform: scale(.9) translateY(-50px);
+      transform: scale(.97) translateY(-50px);
       transition: 0.2s cubic-bezier(.3, 0, 0, 1.3);
       
       li {

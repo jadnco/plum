@@ -1,6 +1,7 @@
 <header id="main-header">
   <div class="inner">
     <div class="row">
+
       <div class="two columns">
         <a href="#" class="logo">Plum</a>
       </div>
@@ -13,13 +14,13 @@
           </ul>
         </nav>
       </div>
-
-      <div class="five columns">
         {{stock-search stocks=stocks action='search'}}
         {{user.id}}
       </div>
     </div>
   </div>
+
+  <img id="loading" src="images/loader.gif">
 </header>
 
 <div class="main-page">

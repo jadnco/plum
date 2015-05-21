@@ -1,11 +1,13 @@
+$font-family: Proxima Nova, Helvetica Neue, sans-serif;
+
 $colors: (    
-  white: #F9FFFF,
+  white: #FFFFFF,
   light: #E6F0F0,
   grey: #A0999E,
   black: #302D2F,
   plum: #8E4585,
-  green: #286944,
-  red: #7A3236
+  green: #579F46,
+  red: #9F4646
 );
 
 $whitespace: (
@@ -17,6 +19,6 @@ $whitespace: (
 );
 
 $font-size: (
-  default: 14px/1.4,
-  large: 2rem/1.2
+  default: 16px/1.4 $font-family,
+  large: 3rem/1.0 $font-family
 );

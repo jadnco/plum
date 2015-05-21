@@ -1,4 +1,14 @@
-@keyframes search-slide-in {
+@keyframes advance-blink {
+  from {
+    color: auto;
+  }
+
+  to {
+    color: color(green);
+  }
+}
+
+@keyframes decline-blink {
   from {
     height: 0;
   }

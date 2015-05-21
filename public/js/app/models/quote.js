@@ -11,5 +11,7 @@ Plum.Quote = DS.Model.extend({
   daysRange: DS.attr(),
   name: DS.attr(),
   volume: DS.attr(),
-  stockExchange: DS.attr()
+  stockExchange: DS.attr(),
+  percentChange: DS.attr(),
+  lastTradeTime: DS.attr()
 });
