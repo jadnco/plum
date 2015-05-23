@@ -1,12 +1,23 @@
 $font-family: Proxima Nova, Helvetica Neue, sans-serif;
 $border-radius: 4px;
 
-$colors: (
+$colors-light: (
   white: #FFFFFF, 
   pearl: #F9FBFB,
   light: #E6F0F0,
   grey: #A0999E,
   black: #302D2F,
+  plum: #8E4585,
+  green: #579F46,
+  red: #9F4646
+);
+
+$colors: (
+  white: #3A3C41, 
+  pearl: #2D2E32,
+  light: #26272A,
+  grey: #797F89,
+  black: #C4CADC,
   plum: #8E4585,
   green: #579F46,
   red: #9F4646

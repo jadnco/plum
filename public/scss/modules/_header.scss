@@ -1,11 +1,12 @@
 #main-header {
   position: relative;
   line-height: 1;
+  background: color(white);
+  border-bottom: 1px solid color(light);
 
   .inner {
-    padding-top: ws(medium);
-    padding-bottom: ws(medium);
-    border-bottom: 1px solid color(light);
+    padding-top: ws(small);
+    padding-bottom: ws(small);
   }
 
   .logo {
@@ -75,6 +76,7 @@
       outline: none;
       border-radius: 3px;
       line-height: 1;
+      background: color(pearl);
 
       &:focus {
         border-color: darken(color(light), 10%);
@@ -93,7 +95,7 @@
       
       li {
         padding: ws(small);
-        background: white;
+        background: color(white);
         border-left: 1px solid color(light);
         border-right: 1px solid color(light);
         border-bottom: 1px solid color(light);
@@ -152,5 +154,12 @@
     border-radius: ws(tiny) * 4;
     box-sizing: border-box;
     display: inline-block;
+    float: right;
+  }
+
+  .username {
+    float: right;
+    margin-top: ws(tiny);
+    margin-right: ws(small);
   }
 }

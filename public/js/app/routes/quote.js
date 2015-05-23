@@ -7,8 +7,6 @@ Plum.QuoteRoute = Ember.Route.extend({
 
     url += encodeURIComponent(query);
     url += '&format=json&env=http%3A%2F%2Fdatatables.org%2Falltables.env&callback=';
-
-    console.log(url);
     
     return this.store.find('quote', url);
   },
