@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 
 var api = require('./routes/api');
 
-//app.set('views', path.join(__dirname, 'views'));
+// app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 app.use('/api', api);

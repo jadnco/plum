@@ -3,6 +3,11 @@
     margin-top: ws(large);
   }
 
+  a {
+    display: block;
+    text-decoration: none;
+  }
+
   #portfolio {
     border: 1px solid color(light);
     padding: ws(medium);

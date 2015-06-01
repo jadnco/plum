@@ -49,3 +49,18 @@ Ember.Handlebars.helper('firstLetter', function(value, opts) {
   
   return '--';
 });
+
+/**
+* Truncate a long string into an ellipsed string
+*/
+Ember.Handlebars.helper('truncate', function(length, value, opts) {
+  if (value != null) {
+    if (value.length <= length) {
+      return value;
+    }
+    
+    return value.substring(0, length) + '...';
+  }
+  
+  return '--';
+});

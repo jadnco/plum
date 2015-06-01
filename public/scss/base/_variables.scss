@@ -1,7 +1,7 @@
 $font-family: Proxima Nova, Helvetica Neue, sans-serif;
 $border-radius: 4px;
 
-$colors-light: (
+$colorlight: (
   white: #FFFFFF, 
   pearl: #F9FBFB,
   light: #E6F0F0,
@@ -34,5 +34,6 @@ $whitespace: (
 $font-size: (
   default: 16px/1.4,
   large: 3rem/1.0,
-  medium: 1.6rem/1.2
+  medium: 1.6rem/1.2,
+  tiny: 0.5rem/1.4
 );

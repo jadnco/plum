@@ -4,8 +4,10 @@
       <div class="row">
         {{#each portfolio in row}}
           <article id="portfolio" class="four columns">
-            <div class="name">{{#link-to 'portfolio' portfolio.id}}{{portfolio.name}}{{/link-to}}</div>
-            <div class="value">{{currency portfolio.value}}</div>
+            {{#link-to 'portfolio' portfolio.id}}
+              <div class="name">{{portfolio.name}}</div>
+              <div class="value">{{currency portfolio.value}}</div>
+            {{/link-to}}
           </article>
         {{/each}}
       </div>
