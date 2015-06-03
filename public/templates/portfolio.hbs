@@ -1,8 +1,32 @@
 <main id="portfolio">
-  
   <div class="inner">
     <div class="row">
-      <section id="recent-transactions" class="five columns">
+    <section id="holdings" class="module seven columns">
+        <h3>Holdings</h3>
+        <table>
+          <tr>
+            <th>Ticker</th>
+            <th>Type</th>
+            <th>Price</th>
+            <th>Shares</th>
+            <th>Value</th>
+          </tr>
+          {{#each transaction in transactions}}
+            <tr>
+              {{#each stock in transaction.stocks}}
+                <td>{{#link-to 'quote' stock.id}}{{stock.id}}{{/link-to}}</td>
+              {{/each}}
+              <td>{{transaction.type}}</td>
+              <td>{{transaction.price}}</td>
+              <td>{{transaction.shares}}</td>
+              <td>{{currency transaction.value}}</td>
+            </tr>
+          {{/each}}
+        </table>
+
+        <a class="view-more" href="">View More</a>
+      </section>
+      <section id="recent-transactions" class="module five columns">
         <h3>Transactions</h3>
         <button class="new-transaction btn" {{action 'newTransaction'}}>New</button>
         <table>

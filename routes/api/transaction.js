@@ -26,16 +26,14 @@ module.exports.add = function(req, res) {
 module.exports.getAll = function(req, res) {
   Transaction.find(function(err, transactions) {
     if (err) res.send(err);
-
-    res.json({transactions: transactions});
+    else res.json({transactions: transactions});
   });
 };
 
 module.exports.get = function(req, res, query) {
   Transaction.findById(query, function(err, transaction) {
     if (err) res.send(err);
-
-    res.json({transaction: transaction});
+    else res.json({transaction: transaction});
   });
 };
 
@@ -43,8 +41,7 @@ module.exports.getByQuery = function(req, res, query) {
   Portfolio.find(query, function(err, portfolio) {
     Transaction.find({_id: {$in: portfolio[0].transactions}}, function(err, transactions) {
       if (err) res.send(err);
-
-      res.json({transactions: transactions});
+      else res.json({transactions: transactions});
     });
   });
 };
@@ -52,8 +49,7 @@ module.exports.getByQuery = function(req, res, query) {
 module.exports.update = function(req, res, id) {
   Transaction.findByIdAndUpdate(id, {$set: req.body.transaction}, function(err, transaction) {
     if (err) res.send(err);
-
-    res.json({transaction: transaction});
+    else res.json({transaction: transaction});
   });
 };
 

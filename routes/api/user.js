@@ -6,36 +6,28 @@ module.exports.add = function(req, res) {
 
   user.save(function(err) {
     if (err) res.send(err);
-
-   res.json({user: user});
+    else res.json({user: user});
   });
 };
 
 module.exports.getAll = function(req, res) {
   User.find(function(err, users) {
     if (err) res.send(err);
-
-    res.json({users: users});
+    else res.json({users: users});
   });
 };
 
 module.exports.get = function(req, res, query) {
   User.find(query, function(err, user) {
     if (err) res.send(err);
-
-    console.log('******* User Request *******')
-    console.log("Found user: " + user);
-    console.log('****************************');
-
-    res.json({user: user});
+    else res.json({user: user});
   });
 };
 
 module.exports.update = function(req, res, id) {
   User.findByIdAndUpdate(id, {$set: req.body.user}, function(err, user) {
     if (err) res.send(err);
-
-    res.json({user: user});
+    else res.json({user: user});
   });
 };
 

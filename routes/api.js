@@ -26,7 +26,9 @@ router.route('/portfolios/:q')
     portfolios.get(req, res, _query);
   })
   .put(function(req, res) {
-    portfolios.update(req, res, req.params.q);
+    var _query = query(req.params.q, {slug: req.params.q});
+
+    portfolios.update(req, res, _query);
   })
   .delete(function(req, res) {
     portfolios.delete(req, res, req.params.q);

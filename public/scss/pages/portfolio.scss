@@ -1,5 +1,5 @@
 #portfolio {
-  #recent-transactions {
+  .module {
     border: 1px solid color(light);
     padding: ws(medium);
     border-radius: $border-radius;
@@ -10,7 +10,9 @@
       float: left;
       margin-top: 6px;
     }
+  }
 
+  #recent-transactions {
     .new-transaction.btn {
       float: right;
     }
