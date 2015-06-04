@@ -17,7 +17,10 @@
             </div>
           </div>
 
-          <div class="graph"></div>
+          <div class="module graph">
+            {{quote-chart quote=id data=content}}
+          </div>
+
           <div>{{time lastTradeTime}}</div>
           
 
@@ -41,7 +44,7 @@
           </select>
         </div>
 
-        <div class="three columns">
+        <div class="module three columns">
           <button class="add-to-portfolio btn" {{action 'showPortfolioModal'}}>Add to portfolio</button>
           <div class="volume"><b>Volume:</b> {{withCommas volume}}</div>
         </div>
@@ -49,4 +52,3 @@
     </div>
   </section>
 </main>
-

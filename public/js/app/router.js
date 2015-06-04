@@ -1,7 +1,5 @@
 Plum.Router.map(function() {
-  this.resource('portfolios');/*, {path: '/:username/portfolios'}, function() {
-    this.resource('portfolio', {path: '/:slug'});
-  }); */
+  this.resource('portfolios', {path: '/'});
 
   this.resource('portfolio', {path: 'portfolio/:slug'}, function() {
     this.route('transactions');

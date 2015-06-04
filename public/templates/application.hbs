@@ -1,24 +1,18 @@
 <header id="main-header">
   <div class="inner">
     <div class="row">
-      <div class="four columns">
+      <div class="nine columns">
         <a href="#" class="logo">Plum</a>
         {{stock-search stocks=stocks action='search'}}
       </div>
 
-      <div class="five columns">
-        <nav id="main-nav">
-          <ul>
-            <li>{{#link-to "portfolios"}}Portfolios{{/link-to}}</li>
-            <li>{{#link-to "users"}}Users{{/link-to}}</li>
-          </ul>
-        </nav>
-      </div>
-
       <div class="three columns">
         <a href='#' class='new-portfolio'>New Portfolio</a>
-        <div class="avatar">{{firstLetter user.id}}</div>
-        <div class="username">{{user.id}}</div>
+        
+        {{#link-to 'user' user.id}}
+          <div class="avatar">{{firstLetter user.id}}</div>
+          <div class="username">{{user.id}}</div>
+        {{/link-to}}
       </div>
     </div>
   </div>

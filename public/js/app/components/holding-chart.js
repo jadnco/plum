@@ -1,54 +1,42 @@
 Plum.HoldingChartComponent = Ember.Component.extend({
   options: {
-     //Boolean - Whether we should show a stroke on each segment
+    animationSteps: 30,
+    animationEasing: "easeOutQuart",
     segmentShowStroke : true,
-
-    //Number - The width of each segment stroke
     segmentStrokeWidth : 4,
-
-    //Number - The percentage of the chart that we cut out of the middle
-    percentageInnerCutout : 60, // This is 0 for Pie charts
-
-    //Boolean - Whether we animate the rotation of the Doughnut
+    percentageInnerCutout : 60,
     animateRotate : true,
-
-    //Boolean - Whether we animate scaling the Doughnut from the centre
     animateScale : false
   },
-  _data: function() {
-    
-  }.property('data'),
   drawChart: function() {
     var self = this;
-
-    var arr  = [];
+    var data = [];
 
     var obj = {
-      color: '#C3CEF3',
-      highlight: "#E35A5E"
+      color: CHART_COLORS[CHART_COLORS.length-1],
+      highlight: CHART_COLORS[CHART_COLORS.length-1]
     };
 
-    var data = self.get('data');
-
     var promise = new Ember.RSVP.Promise(function(res, rej) {
-      res(data);
+      res(self.get('data'));
       rej('error');
     });
 
-    promise.then(function(data) {
-      data.forEach(function(holding) {
+    promise.then(function(holdings) {
+      holdings.forEach(function(holding, i) {
         var _obj = JSON.parse(JSON.stringify(obj));
 
-        _obj.value = holding.get('value');
+        _obj.value = holding.get('percent');
         _obj.label = holding.get('id');
+        _obj.color = CHART_COLORS[i];
 
-        arr.push(_obj);
+        data.push(_obj);
       });
 
 
       // Draw the chart when promise fullfilled
       var ctx = $('#' + self.get('slug')).get(0).getContext("2d");
-      var holdingChart = new Chart(ctx).Doughnut(arr, self.get('options'));
+      var holdingChart = new Chart(ctx).Doughnut(data, self.get('options'));
     });
   },
   didInsertElement: function() {
