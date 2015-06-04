@@ -8,13 +8,16 @@
               <div class="name">{{portfolio.name}}</div>
               <div class="value">{{currency portfolio.value}}</div>
 
-              {{#each holding in portfolio.holdings}}
-                <div {{bind-attr class=':holding ad'}}> {{holding.id}} Holding: {{percent holding.percent}} Return: {{percent holding.overallReturn}}</div>
-              {{/each}}
+              {{holding-chart slug=portfolio.id data=portfolio.holdings}}
+
+              {{!#each holding in portfolio.holdings}}
+                <!--div {{!bind-attr class=':holding ad'}} --> {{!holding.id}} {{!percent holding.percent}} {{!percent holding.overallReturn}}<!--/div -->
+              {{!/each}}
             {{/link-to}}
           </article>
         {{/each}}
       </div>
     {{/each}}
   </div>
-</main
+</main>
+
