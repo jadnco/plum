@@ -64,3 +64,16 @@ Ember.Handlebars.helper('truncate', function(length, value, opts) {
   
   return '--';
 });
+
+/**
+* Convert decimal value into percentage; (eg. 0.12 -> 12%)
+*/
+Ember.Handlebars.helper('percent', function(value, opts) {
+  if (value != null) {
+    var percent = value * 100;
+    
+    return percent + '%';
+  }
+  
+  return '--';
+});

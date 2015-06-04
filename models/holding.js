@@ -8,4 +8,4 @@ var HoldingSchema = new Schema({
   percent: Number
 }, {_id: false});
 
-module.exports = mongoose.model('Holding', HoldingSchema);
+module.exports = HoldingSchema;

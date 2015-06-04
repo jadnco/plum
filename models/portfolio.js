@@ -16,6 +16,7 @@ var PortfolioSchema = new Schema({
     type: Date,
     default: Date.now
   },
+  holdings: [Holding],
   owner: {
     type: Schema.Types.ObjectId,
     ref: 'User'
@@ -23,8 +24,7 @@ var PortfolioSchema = new Schema({
   transactions: [{
     type: Schema.Types.ObjectId,
     ref: 'Transcation'
-  }],
-  holdings: [Holding]
+  }]
 });
 
 PortfolioSchema.pre('save', function(next) {

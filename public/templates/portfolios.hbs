@@ -7,6 +7,10 @@
             {{#link-to 'portfolio' portfolio.id}}
               <div class="name">{{portfolio.name}}</div>
               <div class="value">{{currency portfolio.value}}</div>
+
+              {{#each holding in portfolio.holdings}}
+                <div {{bind-attr class=':holding ad'}}> {{holding.id}} Holding: {{percent holding.percent}} Return: {{percent holding.overallReturn}}</div>
+              {{/each}}
             {{/link-to}}
           </article>
         {{/each}}
