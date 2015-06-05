@@ -22,26 +22,18 @@
           </div>
 
           <div>{{time lastTradeTime}}</div>
-          
 
-          {{!#modal-overlay}}
+          {{#modal-overlay id='portfolio-modal'}}
+            <h2>New Trade</h2>
             Add <strong>{{ticker}}</strong> to a portfolio
-            {{!view 'select'
+            {{view 'select'
               content=controllers.application.portfolios
               optionLabelPath='content.name'
               optionValuePath='content.id'
               prompt='Add to portfolio'
               selection=selectedPortfolio
             }}
-          {{!/modal-overlay}}
-          
-          <select {{! action 'addToPortfolio' on='change'}} class="add-to-portfolio">
-            <option selected disabled>Add to Portfolio</option>
-
-            {{!#each portfolio in controllers.application.portfolios}}
-              <option {{!bind-attr value=portfolio.name}}>{{!portfolio.name}}</option>
-            {{!/each}}
-          </select>
+          {{/modal-overlay}}
         </div>
 
         <div class="module three columns">

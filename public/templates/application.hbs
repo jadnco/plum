@@ -3,15 +3,27 @@
     <div class="row">
       <div class="nine columns">
         <a href="#" class="logo">Plum</a>
+
         {{stock-search stocks=stocks action='search'}}
       </div>
 
       <div class="three columns">
-        <a href='#' class='new-portfolio'>New Portfolio</a>
-        
-        {{#link-to 'user' user.id}}
-          <div class="avatar">{{firstLetter user.id}}</div>
-          <div class="username">{{user.id}}</div>
+        <div class='new-portfolio' {{action showNewPortfolioModal}}>New Portfolio</div>
+
+        {{#modal-overlay id='new-portfolio-modal'}}
+          <h2>New Portfolio</h2>
+          Create a new portfolio.
+
+          <form {{action createNewPortfolio on='submit'}}>
+            {{input type='text' value=newPortfolioName placeholder='Name'}}
+            {{input type='submit' value='submit'}}
+          </form>
+          
+        {{/modal-overlay}}
+
+        {{#link-to 'user' user.username}}
+          <div class="avatar">{{firstLetter user.name}}</div>
+          <div class="username">{{user.username}}</div>
         {{/link-to}}
       </div>
     </div>

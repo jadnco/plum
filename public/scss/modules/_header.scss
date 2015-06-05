@@ -34,41 +34,13 @@
     margin-top: -16px;
   }
 
-  #main-nav {
-    margin-top: ws(tiny);
-
-    ul {
-      list-style: none;
-
-      li {
-        display: inline-block;
-        margin: 0 10px;
-      }
-    }
-  }
-
-  #quick-links {
-    display: inline-block;
-    margin-right: 30px;
-    
-    ul {
-      li {
-        display: inline-block;
-
-        &:not(:last-of-type):after {
-          content: '|';
-          margin: 0 10px;
-        }
-      }
-    }
-  }
-
   .new-portfolio {
     padding: ws(tiny) ws(small);
     border: 1px solid color(light);
     background: color(pearl);
     text-decoration: none;
     display: inline-block;
+    float: left;
     border-radius: $border-radius;
 
     &:hover {
@@ -79,6 +51,8 @@
   #main-search {
     position: relative;
     margin-top: 0 !important;
+    overflow: visible;
+    display: table;
 
     ::-webkit-input-placeholder {
       color: color(grey);
@@ -106,8 +80,7 @@
       border-radius: $border-radius;
       line-height: 1;
       background: color(pearl);
-
-
+      position: absolute;
 
       &:focus {
         border-color: darken(color(light), 10%);
@@ -115,20 +88,23 @@
     }
 
     ul#search-results {
+      outline: 1px solid green;
       list-style: none;
       position: absolute;
-      right: 0;
+      left: 0;
       top: 40px;
       opacity: 0;
       visibility: hidden;
+      display: inline;
       transform: scale(.97) translateY(-50px);
       transition: 0.2s cubic-bezier(.3, 0, 0, 1.3);
       
       li {
-        position: relative;
         padding: ws(small);
+        left: 0;
         line-height: 1.4;
         background: color(white);
+        display: block;
         border-left: 1px solid color(light);
         border-right: 1px solid color(light);
         border-bottom: 1px solid color(light);
@@ -144,9 +120,6 @@
 
         &:hover {
           background: color(light);
-        }
-
-        a {
         }
 
         .ticker {

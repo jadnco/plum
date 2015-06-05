@@ -24,15 +24,15 @@ module.exports.get = function(req, res, query) {
   });
 };
 
-module.exports.update = function(req, res, id) {
-  User.findByIdAndUpdate(id, {$set: req.body.user}, function(err, user) {
+module.exports.update = function(req, res, query) {
+  User.findOneAndUpdate(query, {$set: req.body.user}, function(err, user) {
     if (err) res.send(err);
     else res.json({user: user});
   });
 };
 
-module.exports.delete = function(req, res, id) {
-  User.findByIdAndRemove(id, function(err) {
+module.exports.delete = function(req, res, query) {
+  User.findOneAndRemove(query, function(err) {
     if (err) res.send(err);
 
     // TODO: Delete all portfolios

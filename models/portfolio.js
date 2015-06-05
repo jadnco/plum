@@ -9,9 +9,18 @@ var PortfolioSchema = new Schema({
     type: String,
     unique: true
   },
-  value: Number,
-  cash: Number,
-  overallReturn: Number,
+  value: {
+    type: Number,
+    default: 0
+  },
+  cash: {
+    type: Number,
+    default: 0
+  },
+  overallReturn: {
+    type: Number,
+    default: 0
+  },
   created: {
     type: Date,
     default: Date.now

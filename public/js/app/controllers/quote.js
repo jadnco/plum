@@ -22,5 +22,11 @@ Plum.QuoteController = Ember.ObjectController.extend({
   }.property('id'),
   price: function() {
     return this.get('lastTradePriceOnly')
-  }.property('lastTradePriceOnly')
+  }.property('lastTradePriceOnly'),
+  actions: {
+    showPortfolioModal: function() {
+      $('#portfolio-modal').find('.modal').addClass('visible');
+      $('#portfolio-modal').find('.overlay').addClass('visible');
+    }
+  }
 });

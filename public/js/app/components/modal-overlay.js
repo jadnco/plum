@@ -1,6 +1,10 @@
 Plum.ModalOverlayComponent = Ember.Component.extend({
-  type: '',
-  isAddToPortfolio: function() {
-    return this.get('type').toLowerCase() == 'addtoportfolio';
-  }.property('type')
+  actions: {
+    closeModal: function() {
+      var id = this.get('id');
+
+      $('#' + id).find('.modal').removeClass('visible');
+      $('#' + id).find('.overlay').removeClass('visible');
+    }
+  }
 });

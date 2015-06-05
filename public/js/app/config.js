@@ -1,4 +1,4 @@
-window.USER = 'jadnco';
+window.USER = '554385e8cd2d66a1562cd7b9';
 
 window.CHART_COLORS1 = [
   '#C14F4A',

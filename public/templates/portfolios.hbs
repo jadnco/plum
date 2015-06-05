@@ -3,7 +3,7 @@
     {{#each row in rows}}
       <div class="row">
         {{#each portfolio in row}}
-          <article id="portfolio" class="four columns">
+          <article id="portfolio" class="module four columns">
             {{#link-to 'portfolio' portfolio.id}}
               <div class="name">{{portfolio.name}}</div>
               <div class="value">{{currency portfolio.value}}</div>

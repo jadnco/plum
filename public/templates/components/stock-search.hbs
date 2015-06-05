@@ -4,14 +4,14 @@
   <ul id="search-results">
     {{#if isSearching}}
       {{#each stock in stocks}}
-        <li>
+        
+          <li {{action clearSearch}}>
           {{#link-to 'quote' stock.id bubbles=true}}
-            <span {{action clearSearch}}>
-              <span class="ticker">{{stock.id}}</span>
-              <span class="name">{{truncate 30 stock.name}}</span><span class="exchange">{{stock.exchange}}</span>
-            </span>
-          {{/link-to}}
-        </li>
+            <span class="ticker">{{stock.id}}</span>
+            <span class="name">{{truncate 30 stock.name}}</span>
+            {{/link-to}}
+          </li>
+        
       {{/each}}
     {{/if}}
   </ul>

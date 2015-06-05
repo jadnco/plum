@@ -31,15 +31,20 @@ router.route('/portfolios/:q')
     portfolios.update(req, res, _query);
   })
   .delete(function(req, res) {
-    portfolios.delete(req, res, req.params.q);
+    var _query = query(req.params.q, {slug: req.params.q});
+    portfolios.delete(req, res, _query);
   });
 
 // Get all portfolios of a certain user
 router.route('/portfolios')
   .get(function(req, res) {
-    var _query = query(req.query.user, {username: req.query.user});
+    if (req.query.user !== undefined) {
+      var _query = query(req.query.user, {username: req.query.user});
 
-    portfolios.getByQuery(req, res, _query);
+      portfolios.getByQuery(req, res, _query);
+    } else {
+      portfolios.getAll(req, res);
+    }
   })
   .post(function(req, res) {
     portfolios.add(req, res);
@@ -97,10 +102,14 @@ router.route('/users/:q')
     users.get(req, res, _query);
   })
   .put(function(req, res) {
-    users.update(req, res, req.params.q);
+    var _query = query(req.params.q, {username: req.params.q});
+
+    users.update(req, res, _query);
   })
   .delete(function(req, res) {
-    users.delete(req, res, req.params.q);
+    var _query = query(req.params.q, {username: req.params.q});
+
+    users.delete(req, res, _query);
   });
 
 module.exports = router;

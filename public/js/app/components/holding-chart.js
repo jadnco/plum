@@ -17,27 +17,21 @@ Plum.HoldingChartComponent = Ember.Component.extend({
       highlight: CHART_COLORS[CHART_COLORS.length-1]
     };
 
-    var promise = new Ember.RSVP.Promise(function(res, rej) {
-      res(self.get('data'));
-      rej('error');
+    self.get('data').forEach(function(holding, i) {
+      // Create a deep clone of the object
+      var _obj = JSON.parse(JSON.stringify(obj));
+
+      _obj.value = holding.get('percent');
+      _obj.label = holding.get('id');
+      _obj.color = CHART_COLORS[i];
+
+      // Push obj to data array
+      data.push(_obj);
     });
 
-    promise.then(function(holdings) {
-      holdings.forEach(function(holding, i) {
-        var _obj = JSON.parse(JSON.stringify(obj));
-
-        _obj.value = holding.get('percent');
-        _obj.label = holding.get('id');
-        _obj.color = CHART_COLORS[i];
-
-        data.push(_obj);
-      });
-
-
-      // Draw the chart when promise fullfilled
-      var ctx = $('#' + self.get('slug')).get(0).getContext("2d");
-      var holdingChart = new Chart(ctx).Doughnut(data, self.get('options'));
-    });
+    // Draw the chart when promise fullfilled
+    var ctx   = $('#' + self.get('slug')).get(0).getContext("2d");
+    var chart = new Chart(ctx).Doughnut(data, self.get('options'));
   },
   didInsertElement: function() {
     this.drawChart();

@@ -1,3 +1,3 @@
 Plum.UserSerializer = DS.RESTSerializer.extend({
-  primaryKey: 'username'
+  primaryKey: '_id'
 });

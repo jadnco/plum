@@ -13,10 +13,11 @@ module.exports.add = function(req, res) {
         {$push: {'portfolios': portfolio._id}},
         {safe: true, upsert: true}, function(err, user) {
           if (err) res.send(err);
+          else res.json({portfolio: portfolio});
+
+          console.log('New portfolio created: ' + portfolio.name);  
         }
       );
-
-      res.json({portfolio: portfolio});  
     } 
   });
 };
@@ -36,8 +37,8 @@ module.exports.get = function(req, res, query) {
 };
 
 module.exports.getByQuery = function(req, res, query) {
-  User.find(query, function(err, user) {
-    Portfolio.find({_id: {$in: user[0].portfolios}}, function(err, portfolios) {
+  User.findOne(query, function(err, user) {
+    Portfolio.find({_id: {$in: user.portfolios}}, function(err, portfolios) {
       if (err) res.send(err);
       else res.json({portfolios: portfolios});
     });
@@ -51,9 +52,20 @@ module.exports.update = function(req, res, query) {
   });
 };
 
-module.exports.delete = function(req, res, id) {
-  Portfolio.findByIdAndRemove(id, function(err) {
-    if (err) res.send(err);
-    else res.sendStatus(200);    
+module.exports.delete = function(req, res, query) {
+  Portfolio.findOneAndRemove(query, function(err, portfolio) {
+    if (err || !portfolio) res.send(err);
+    else {
+      // Delete reference from user
+      User.findByIdAndUpdate(portfolio.owner,
+        {$pull: {'portfolios': portfolio._id}}, function(err) {
+          if (err) res.send(err);
+          else {
+            res.sendStatus(200);
+            console.log('Deleted portfolio: ' + portfolio.name);
+          }
+        }
+      );
+    }
   });
 };
