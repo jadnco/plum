@@ -7,7 +7,7 @@
             {{#link-to 'portfolio' portfolio.id}}
               <div class="name">{{portfolio.name}}</div>
               <div class="value">{{currency portfolio.value}}</div>
-
+              {{portfolio.created}}
               {{holding-chart slug=portfolio.id data=portfolio.holdings}}
 
               {{!#each holding in portfolio.holdings}}

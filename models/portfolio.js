@@ -25,6 +25,7 @@ var PortfolioSchema = new Schema({
     type: Date,
     default: Date.now
   },
+  modified: Date,
   holdings: [Holding],
   owner: {
     type: Schema.Types.ObjectId,
@@ -37,7 +38,9 @@ var PortfolioSchema = new Schema({
 });
 
 PortfolioSchema.pre('save', function(next) {
+  console.log("Portfolio Saved");
   this.slug = slugify(this.name);
+  this.modified = Date.now;
   //this.holdings.push();
   /* TODO
     - Calculate holding percent of stock
@@ -49,6 +52,12 @@ PortfolioSchema.pre('save', function(next) {
 
 PortfolioSchema.pre('update', function() {
   console.log('UPADTED PORTFOLIO');
+
+  // this.slug = slugify(this.name);
+
+  /*this.update({$set: {
+    modified: Date.now
+  }});*/
   // Just test fixture data
   /*var holdings = [
     {

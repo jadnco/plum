@@ -1,6 +1,5 @@
 .modal {
   position: fixed;
-  outline: 1px solid red;
   top: 50%;
   left: 50%;
   transform: scale(1.2) translateX(-50%) translateY(-50%);
@@ -10,6 +9,7 @@
   opacity: 0;
   visibility: hidden;
   transform-origin: 0 0;
+  box-shadow: none;
 
   transition: all 0.3s cubic-bezier(0.680, -0.550, 0.265, 1.550);
 
@@ -37,7 +37,7 @@
 .overlay {
   position: fixed;
   z-index: 998;
-  background: rgba(color(pearl), 0.9);
+  background: rgba(color(black), 0.8);
   left: 0;
   right: 0;
   top: 0;

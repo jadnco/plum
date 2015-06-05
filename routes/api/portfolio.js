@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var Portfolio = require('../../models/portfolio');
 var User = require('../../models/user');
+var colors = require('colors');
 
 module.exports.add = function(req, res) {
   var portfolio = new Portfolio(req.body.portfolio);
@@ -15,7 +16,7 @@ module.exports.add = function(req, res) {
           if (err) res.send(err);
           else res.json({portfolio: portfolio});
 
-          console.log('New portfolio created: ' + portfolio.name);  
+          console.log(('Created portfolio: ' + portfolio.name).bgGreen.black);  
         }
       );
     } 
@@ -26,7 +27,7 @@ module.exports.getAll = function(req, res) {
   Portfolio.find(function(err, portfolios) {
     if (err) res.send(err);
     else res.json({portfolios: portfolios});
-  });
+  }).sort('-created');
 };
 
 module.exports.get = function(req, res, query) {
@@ -46,7 +47,7 @@ module.exports.getByQuery = function(req, res, query) {
 };
 
 module.exports.update = function(req, res, query) {
-  Portfolio.findOneAndUpdate(query, {$set: req.body.portfolio}, function(err, portfolio) {
+  Portfolio.findOneAndUpdate(query, {$set: req.body.portfolio}, {upsert: true}, function(err, portfolio) {
     if (err) res.send(err);
     else res.json({portfolio: portfolio});
   });
@@ -62,10 +63,11 @@ module.exports.delete = function(req, res, query) {
           if (err) res.send(err);
           else {
             res.sendStatus(200);
-            console.log('Deleted portfolio: ' + portfolio.name);
           }
         }
       );
+
+      console.log(('Deleted portfolio: ' + portfolio.name).bgRed.white);
     }
   });
 };
