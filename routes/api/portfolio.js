@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var Portfolio = require('../../models/portfolio');
 var User = require('../../models/user');
+var slugify = require('../../functions').slugify;
 var colors = require('colors');
 
 module.exports.add = function(req, res) {
@@ -47,7 +48,12 @@ module.exports.getByQuery = function(req, res, query) {
 };
 
 module.exports.update = function(req, res, query) {
-  Portfolio.findOneAndUpdate(query, {$set: req.body.portfolio}, {upsert: true}, function(err, portfolio) {
+  var updated = req.body.portfolio;
+
+  updated.slug = slugify(updated.name);
+  updated.modified = Date.now();
+
+  Portfolio.findOneAndUpdate(query, {$set: updated}, function(err, portfolio) {
     if (err) res.send(err);
     else res.json({portfolio: portfolio});
   });
