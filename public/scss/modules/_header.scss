@@ -157,7 +157,6 @@
     margin-top: 0 !important;
     height: 30px;
     width: 30px;
-    padding: 6px;
     text-align: center;
     border: 1px solid color(light);
     outline: none;
@@ -167,6 +166,11 @@
     box-sizing: border-box;
     display: inline-block;
     float: right;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+    }
   }
 
   .username {

@@ -1,3 +1,5 @@
+var md5 = require('MD5');
+
 module.exports = {
   slugify: function(text) {
     return text.toString().toLowerCase()
@@ -17,5 +19,14 @@ module.exports = {
     }
     
     return query;
+  },
+  gravatar: function(email) {
+    var gravatar = 'http://www.gravatar.com/avatar/';
+    
+    if (email !== undefined) {
+      return gravatar + md5(email);
+    }
+    
+    return '';
   }
 };

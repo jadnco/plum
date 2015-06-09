@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var User = require('../../models/user');
+var gravatar = require('../../functions').gravatar;
 
 module.exports.add = function(req, res) {
   var user = new User(req.body.user);
@@ -25,7 +26,13 @@ module.exports.get = function(req, res, query) {
 };
 
 module.exports.update = function(req, res, query) {
-  User.findOneAndUpdate(query, {$set: req.body.user}, function(err, user) {
+  var updated = req.body.user;
+
+  if (updated.email !== undefined) {
+    updated.avatar = gravatar(updated.email);  
+  }
+
+  User.findOneAndUpdate(query, {$set: updated}, function(err, user) {
     if (err) res.send(err);
     else res.json({user: user});
   });

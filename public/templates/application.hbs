@@ -22,7 +22,9 @@
         {{/modal-overlay}}
 
         {{#link-to 'user' user.username}}
-          <div class="avatar">{{firstLetter user.name}}</div>
+          <div class="avatar">
+            <img {{bind-attr src=user.avatar}}>
+          </div>
           <div class="username">{{user.username}}</div>
         {{/link-to}}
       </div>

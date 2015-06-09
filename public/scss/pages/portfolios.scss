@@ -9,6 +9,8 @@
   }
 
   #portfolio {
+    position: relative;
+    
     .holding {
       &.advance {
         background: color(green);

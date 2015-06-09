@@ -1,1 +1,7 @@
-<canvas {{bind-attr id='slug'}} class="holding-chart"></canvas>
+<div class="holding-chart-wrap">
+  <div class="holding-count">
+    <div class="count">{{data.length}}</div>
+    <div class="count-title">Stocks</div>
+  </div>
+  <canvas {{bind-attr id='slug'}} class="holding-chart"></canvas>
+</div>

@@ -43,6 +43,9 @@ module.exports.getByQuery = function(req, res, query) {
     Portfolio.find({_id: {$in: user.portfolios}}, function(err, portfolios) {
       if (err) res.send(err);
       else res.json({portfolios: portfolios});
+
+      // TODO:
+      // > Update value based on cash and holdings
     });
   });
 };
@@ -50,7 +53,10 @@ module.exports.getByQuery = function(req, res, query) {
 module.exports.update = function(req, res, query) {
   var updated = req.body.portfolio;
 
-  updated.slug = slugify(updated.name);
+  if (updated.name !== undefined) {
+    updated.slug = slugify(updated.name);  
+  }
+  
   updated.modified = Date.now();
 
   Portfolio.findOneAndUpdate(query, {$set: updated}, function(err, portfolio) {

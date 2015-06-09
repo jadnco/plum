@@ -1,5 +1,29 @@
-.holding-chart {
-  width: 100%;
-  height: 200px;
-  margin: ws(medium) 0 0 0;
+.holding-chart-wrap {
+  margin-top: ws(medium);
+  position: relative;
+  display: inline-block;
+
+  .holding-chart {
+    width: 100%;
+    height: 200px;
+    position: relative;
+  }
+
+  .holding-count {
+    position: absolute;
+    text-align: center;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+
+    .count {
+      font: font(large);
+      line-height: 0.8;
+    }
+
+    .count-title {
+      color: color(grey);
+    }
+  }
 }
