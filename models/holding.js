@@ -6,6 +6,6 @@ var HoldingSchema = new Schema({
   value: Number,
   overallReturn: Number,
   percent: Number
-}, {_id: false});
+});
 
 module.exports = HoldingSchema;

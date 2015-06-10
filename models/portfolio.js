@@ -43,6 +43,9 @@ PortfolioSchema.pre('save', function(next) {
   this.slug = slugify(this.name);
   this.modified = Date.now;
 
+  // Value will always start out at cash value
+  this.value = this.cash;
+
   //this.holdings.push();
   /* TODO
     - Calculate holding percent of stock

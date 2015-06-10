@@ -8,17 +8,19 @@
       </div>
 
       <div class="three columns">
-        <div class="new-portfolio" {{action showNewPortfolioModal}}>New Portfolio</div>
+        <div class="new-portfolio btn" {{action showNewPortfolioModal}}>New Portfolio</div>
 
         {{#modal-overlay id='new-portfolio-modal'}}
           <h2>New Portfolio</h2>
-          Create a new portfolio.
+          <div>Use the form to create a new portfolio.<br>You'll be redirected to it afterwards.</div>
 
           <form id="new-portfolio-form" {{action createNewPortfolio on='submit'}}>
             {{input type='text' name='name' value=newPortfolio.name placeholder='Name'}}
             {{input type='text' name='cash' value=newPortfolio.cash placeholder='Cash'}}
 
-            {{input type='submit' value='submit'}}
+            <div class="form-error"></div>
+
+            {{input type='submit' value='Submit'}}
           </form>
           
         {{/modal-overlay}}

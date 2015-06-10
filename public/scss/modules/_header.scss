@@ -35,18 +35,9 @@
   }
 
   .new-portfolio {
-    padding: ws(tiny) ws(small);
-    border: 1px solid color(light);
-    background: color(pearl);
-    text-decoration: none;
     display: inline-block;
     float: left;
-    cursor: pointer;
-    border-radius: $border-radius;
-
-    &:hover {
-      border-color: darken(color(light), 10%);
-    }
+    padding: ws(tiny) ws(small);
   }
 
   #main-search {
@@ -54,39 +45,6 @@
     margin-top: 0 !important;
     overflow: visible;
     display: table;
-
-    ::-webkit-input-placeholder {
-      color: color(grey);
-    }
-
-    :-moz-placeholder { /* Firefox 18- */
-      color: color(grey);  
-    }
-
-    ::-moz-placeholder {  /* Firefox 19+ */
-      color: color(grey);  
-    }
-
-    :-ms-input-placeholder {  
-      color: color(grey);
-    }
-
-    input {
-      margin-top: 0 !important;
-      font: inherit;
-      float: left;
-      padding: ws(tiny);
-      border: 1px solid color(light);
-      outline: none;
-      border-radius: $border-radius;
-      line-height: 1;
-      background: color(pearl);
-      position: absolute;
-
-      &:focus {
-        border-color: darken(color(light), 10%);
-      }
-    }
 
     ul#search-results {
       outline: 1px solid green;

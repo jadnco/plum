@@ -8,49 +8,52 @@ Plum.ApplicationRoute = Ember.Route.extend({
 
           owner = self.controller.get('user'),
 
-          message = 'Please set a value.';
+          message = 'Please set both values.';
 
       var counter = 0;
 
       // Loop through portfolio keys
       for (var key in portfolio) {
-        var value = portfolio[key] || '';
-
-        value = value.trim();
+        var value = (portfolio[key] || '').trim();
 
         // Values is set
         if (value.length > 0) {
 
           // All values are filled
           if (counter === (portfolioLength - 1)) {
-            // Create new portfolio record
-            var record = store.createRecord('portfolio', {
-              name: name,
-              owner: owner
-            });
+            if (isNaN(parseFloat(value))) {
+              message = 'Cash needs to be a number';
 
-            // Save the portfolio record
-            record.save().then(function(_portfolio) {
-              self.transitionTo('portfolio', _portfolio.get('id'));
-            });
+              $('#new-portfolio-form').find('.form-error').text(message);
 
-            // Send close action to controller
-            self.controller.send('closeNewPortfolioModal');
+              break;
+            } else {
+              // Create new portfolio record
+              var record = store.createRecord('portfolio', {
+                name: portfolio.name,
+                cash: parseFloat(portfolio.cash),
+                owner: owner
+              });
 
-            break;
+              // Save the portfolio record
+              record.save().then(function(_portfolio) {
+                self.transitionTo('portfolio', _portfolio.get('id'));
+              });
+
+              // Send close action to controller
+              self.controller.send('closeNewPortfolioModal');
+            }
           }
         } else {
-          console.log(key + ' is an empty string!');
+          $('#new-portfolio-form').find('.form-error').text(message);
 
-          $('#new-portfolio-form').find('input[name="' + key + '"]').after(message);
+          break;
         }
 
         counter++;
       }
 
-      console.log('---------------------------');
-
-      //console.log(portfolio);
+      console.log(portfolio);
 
       
 

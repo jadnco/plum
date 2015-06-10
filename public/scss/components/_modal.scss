@@ -1,5 +1,6 @@
 .modal {
   position: fixed;
+  font: font(default);
   top: 50%;
   left: 50%;
   transform: scale(1.2) translateX(-50%) translateY(-50%);
@@ -50,4 +51,25 @@
 .visible {
   visibility: visible;
   opacity: 1;
+}
+
+#new-portfolio-modal {
+  #new-portfolio-form {
+    margin-top: ws(medium);
+
+    input[type=text]:nth-of-type(2) {
+      margin-left: ws(tiny);
+    }
+
+    input[type=submit] {
+      display: block;
+      
+      margin: ws(small) auto 0 auto;
+    }
+
+    .form-error {
+      margin-top: ws(small);
+      color: color(red);
+    }
+  }
 }

@@ -1,3 +1,3 @@
 Plum.HoldingSerializer = DS.RESTSerializer.extend({
-  primaryKey: 'ticker'
+  primaryKey: '_id'
 });

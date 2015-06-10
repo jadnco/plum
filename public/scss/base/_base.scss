@@ -42,7 +42,8 @@ a {
   padding: ws(tiny) ws(medium);
   border: 1px solid darken(color(light), 10%);
   outline: none;
-  border-radius: 3px;
+  display: inline-block;
+  border-radius: $border-radius;
   background: color(light);
   cursor: pointer;
   -webkit-appearance: none;
@@ -50,6 +51,16 @@ a {
 
   &:hover {
     background: darken(color(light), 10%);
+  }
+
+  &.red {
+    color: color(light);
+    background: color(red);
+    border-color: darken(color(red), 10%);
+
+    &:hover {
+      background: darken(color(red), 10%);
+    }
   }
 }
 
@@ -64,5 +75,37 @@ a {
   h3 {
     float: left;
     margin-top: 6px;
+  }
+}
+
+input {
+  font: inherit;
+  padding: ws(tiny);
+  border: 1px solid color(light);
+  outline: none;
+  border-radius: $border-radius;
+  line-height: 1;
+  background: color(white);
+  -webkit-appearance: none;
+  transition: 0.1s;
+
+  &:hover {
+    border-color: darken(color(light), 10%);
+  }
+
+  &:focus {
+    border-color: darken(color(light), 10%);
+    background: color(pearl);
+  }
+}
+
+input[type=submit] {
+  cursor: pointer;
+  border: 1px solid darken(color(light), 10%);
+  background: color(light);
+  padding: ws(tiny) ws(small);
+
+  &:hover {
+    background: darken(color(light), 10%);
   }
 }

@@ -8,7 +8,7 @@
               <div class="name">{{portfolio.name}}</div>
               <div class="value">{{currency portfolio.value}}</div>
               {{portfolio.created}}
-              {{holding-chart slug=portfolio.id data=portfolio.holdings}}
+              {{holding-chart slug=portfolio.id holdings=portfolio.holdings}}
 
               {{!#each holding in portfolio.holdings}}
                 <!--div {{!bind-attr class=':holding ad'}} --> {{!holding.id}} {{!percent holding.percent}} {{!percent holding.overallReturn}}<!--/div -->
