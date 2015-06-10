@@ -1,33 +1,86 @@
 Plum.ApplicationRoute = Ember.Route.extend({
   actions: {
     createNewPortfolio: function() {
-      var self  = this;
-      var store = this.store;
+      var self  = this,
+          store = self.store,
+          portfolio = self.controller.get('newPortfolio'),
+          portfolioLength = Object.keys(portfolio).length,
 
-      console.log("PORTFOLIO STORE -->");
+          owner = self.controller.get('user'),
 
-      var user = this.controller.get('user');
-      console.log(user.get('id'));
+          message = 'Please set a value.';
 
-      var portfolio = store.createRecord('portfolio', {
-        name: self.controller.get('newPortfolioName'),
-        owner: user
-      });
+      var counter = 0;
 
-      portfolio.save().then(function(_portfolio) {
-        self.transitionTo('portfolio', _portfolio.get('id'));
-      });
+      // Loop through portfolio keys
+      for (var key in portfolio) {
+        var value = portfolio[key] || '';
+
+        value = value.trim();
+
+        // Values is set
+        if (value.length > 0) {
+
+          // All values are filled
+          if (counter === (portfolioLength - 1)) {
+            // Create new portfolio record
+            var record = store.createRecord('portfolio', {
+              name: name,
+              owner: owner
+            });
+
+            // Save the portfolio record
+            record.save().then(function(_portfolio) {
+              self.transitionTo('portfolio', _portfolio.get('id'));
+            });
+
+            // Send close action to controller
+            self.controller.send('closeNewPortfolioModal');
+
+            break;
+          }
+        } else {
+          console.log(key + ' is an empty string!');
+
+          $('#new-portfolio-form').find('input[name="' + key + '"]').after(message);
+        }
+
+        counter++;
+      }
+
+      console.log('---------------------------');
+
+      //console.log(portfolio);
+
+      
+
+      // Make sure a portfolio name is given
+      /* if (name) {
+        // Create new portfolio record
+        var portfolio = store.createRecord('portfolio', {
+          name: name,
+          owner: owner
+        });
+
+        // Save the portfolio record
+        portfolio.save().then(function(_portfolio) {
+          self.transitionTo('portfolio', _portfolio.get('id'));
+        });
+
+        // Send close action to controller
+        self.controller.send('closeNewPortfolioModal');
+      } */
+      
 
       //self.get('store').reload();
 
       //self.get('parentView').send('closeModal');
       
-      //self.modelFor('portfolios').reload();
+      //self.controller.get('portfolios').reload();
       //self.modelFor('portfolios').refresh();
 
       // TODO:
       // Refresh portfolios model
-      // --> Clear form data
     },
     search: function(term) {
       var self = this;
