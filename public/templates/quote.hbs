@@ -23,21 +23,39 @@
 
           <div>{{time lastTradeTime}}</div>
 
-          {{#modal-overlay id='portfolio-modal'}}
+          {{#modal-overlay id='new-trade-modal'}}
             <h2>New Trade</h2>
-            Add <strong>{{ticker}}</strong> to a portfolio
-            {{view 'select'
-              content=controllers.application.portfolios
-              optionLabelPath='content.name'
-              optionValuePath='content.id'
-              prompt='Add to portfolio'
-              selection=selectedPortfolio
-            }}
+            <div>Use the form to add <strong>{{ticker}}</strong> to a portfolio.</div>
+
+            <form id="new-trade-form" {{action addToPortfolio on='submit'}}>
+              {{view 'select'
+                content=controllers.application.portfolios
+                optionLabelPath='content.name'
+                optionValuePath='content.id'
+                prompt='Choose a portfolio'
+                value=newTrade.portfolio
+                name='portfolio'
+              }}
+
+              {{input type='number' min='1' name='shares' value=newTrade.shares placeholder='Shares'}}
+              
+              <span>&times;</span>
+              
+              {{input type='text' name='price' value=newTrade.price placeholder='Price'}}
+
+              {{#if newTrade.shares}}
+                <div class="total-value">Total value: ${{multiply newTrade.shares newTrade.price}}</div>
+              {{/if}}
+
+              <div class="form-error"></div>
+
+              {{input type='submit' value='Submit'}}
+            </form>
           {{/modal-overlay}}
         </div>
 
         <div class="module three columns">
-          <button class="add-to-portfolio btn" {{action 'showPortfolioModal'}}>Add to portfolio</button>
+          <button class="add-to-portfolio btn" {{action showNewTradeModal}}>Add to portfolio</button>
           <div class="volume"><b>Volume:</b> {{withCommas volume}}</div>
         </div>
       </div>

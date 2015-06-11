@@ -1,9 +1,8 @@
 Plum.HoldingChartComponent = Ember.Component.extend({
   options: {
-    animationSteps: 30,
+    animationSteps: 20,
     animationEasing: "easeOutQuart",
     segmentShowStroke : false,
-    segmentStrokeWidth : 0,
     percentageInnerCutout : 75,
     animateRotate : true,
     animateScale : false
@@ -15,17 +14,27 @@ Plum.HoldingChartComponent = Ember.Component.extend({
     var obj = {
       highlight: CHART_COLORS[CHART_COLORS.length-1]
     };
+    
+    var counter = 0;
 
-    self.get('holdings').forEach(function(holding, i) {
+    self.get('holdings').forEach(function(holding) {
       // Create a deep clone of the object
       var _obj = JSON.parse(JSON.stringify(obj));
 
       _obj.value = holding.get('percent');
       _obj.label = holding.get('ticker');
-      _obj.color = CHART_COLORS[i];
+
+      // If on second last color
+      if (counter === CHART_COLORS.length - 1) {
+        counter = 0;
+      }
+
+      _obj.color = CHART_COLORS[counter];
 
       // Push obj to data array
       data.push(_obj);
+
+      counter++;
     });
 
     // Draw the chart when promise fullfilled

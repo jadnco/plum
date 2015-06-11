@@ -47,4 +47,4 @@ gulp.task('watch', function() {
   gulp.watch('public/js/**/*.js', ['scripts']);
 });
 
-gulp.task('default', ['templates', 'styles', 'watch', 'scripts']);
+gulp.task('default', ['serve', 'templates', 'styles', 'watch', 'scripts']);

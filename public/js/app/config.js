@@ -15,5 +15,6 @@ window.CHART_COLORS = [
   '#F2EBBF',
   '#8CBEB2',
   '#5C4B51',
-  '#98959B'
+  
+  '#C3C7C1'
 ];

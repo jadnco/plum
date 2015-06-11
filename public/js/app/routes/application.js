@@ -52,27 +52,6 @@ Plum.ApplicationRoute = Ember.Route.extend({
 
         counter++;
       }
-
-      console.log(portfolio);
-
-      
-
-      // Make sure a portfolio name is given
-      /* if (name) {
-        // Create new portfolio record
-        var portfolio = store.createRecord('portfolio', {
-          name: name,
-          owner: owner
-        });
-
-        // Save the portfolio record
-        portfolio.save().then(function(_portfolio) {
-          self.transitionTo('portfolio', _portfolio.get('id'));
-        });
-
-        // Send close action to controller
-        self.controller.send('closeNewPortfolioModal');
-      } */
       
 
       //self.get('store').reload();

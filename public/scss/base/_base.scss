@@ -78,14 +78,16 @@ a {
   }
 }
 
-input {
+input,
+select {
   font: inherit;
   padding: ws(tiny);
   border: 1px solid color(light);
   outline: none;
   border-radius: $border-radius;
   line-height: 1;
-  background: color(white);
+  background-color: color(white);
+  -moz-appearance: none;
   -webkit-appearance: none;
   transition: 0.1s;
 
@@ -93,10 +95,18 @@ input {
     border-color: darken(color(light), 10%);
   }
 
-  &:focus {
+  &:not(select):focus {
     border-color: darken(color(light), 10%);
-    background: color(pearl);
+    background-color: color(pearl);
   }
+}
+
+select {
+  padding-right: ws(medium);
+  background-image: url(../../images/chevron-down.svg);
+  background-repeat: no-repeat; 
+  background-size: 10px;
+  background-position: right ws(tiny) top 12px;
 }
 
 input[type=submit] {

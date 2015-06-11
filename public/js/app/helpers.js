@@ -2,7 +2,7 @@
 * Converts number value '1839048' into '1,839,048'
 */
 Ember.Handlebars.helper('withCommas', function(value, opts) {
-  if (value != null) {
+  if (value !== null) {
     var parts = value.toString().split(".");
     parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     
@@ -16,7 +16,7 @@ Ember.Handlebars.helper('withCommas', function(value, opts) {
 * Converts currency value '18392.99' into '$18,392.99'
 */
 Ember.Handlebars.helper('currency', function(value, opts) {
-  if (value != null) {
+  if (value !== null) {
     var parts = value.toFixed(2).toString().split(".");
     parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     
@@ -30,7 +30,7 @@ Ember.Handlebars.helper('currency', function(value, opts) {
 * Converts time value '10:39am' into '10:39 AM'
 */
 Ember.Handlebars.helper('time', function(value, opts) {
-  if (value != null) {
+  if (value !== null) {
     var val = value.toString().toUpperCase();
 
     // Insert space in between number and capital letter
@@ -43,7 +43,7 @@ Ember.Handlebars.helper('time', function(value, opts) {
 });
 
 Ember.Handlebars.helper('firstLetter', function(value, opts) {
-  if (value != null) {
+  if (value !== null) {
     return value.toString().charAt(0).toUpperCase();
   }
   
@@ -54,7 +54,7 @@ Ember.Handlebars.helper('firstLetter', function(value, opts) {
 * Truncate a long string into an ellipsed string
 */
 Ember.Handlebars.helper('truncate', function(length, value, opts) {
-  if (value != null) {
+  if (value !== null) {
     if (value.length <= length) {
       return value;
     }
@@ -69,10 +69,23 @@ Ember.Handlebars.helper('truncate', function(length, value, opts) {
 * Convert decimal value into percentage; (eg. 0.12 -> 12%)
 */
 Ember.Handlebars.helper('percent', function(value, opts) {
-  if (value != null) {
+  if (value !== null) {
     var percent = value * 100;
     
     return percent + '%';
+  }
+  
+  return '--';
+});
+
+/**
+* Multiply two values
+*/
+Ember.Handlebars.helper('multiply', function(a, b, opts) {
+  if (a !== null && b !== null) {
+    var multiply = a * b;
+    
+    return multiply.toFixed(2);
   }
   
   return '--';
