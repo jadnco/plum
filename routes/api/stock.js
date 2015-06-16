@@ -43,7 +43,7 @@ module.exports.get = function(req, res, query) {
           delete results[i].exchDisp;
           delete results[i].type;
           delete results[i].typeDisp;
-        };
+        }
       }
 
       res.json(stocks);

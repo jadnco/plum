@@ -6,7 +6,6 @@ Plum.QuoteChartComponent = Ember.Component.extend({
   },
   drawChart: function() {
     var self = this;
-    //var data = [];
     var data = {
         labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
         datasets: [

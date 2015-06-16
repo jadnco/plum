@@ -12,9 +12,7 @@ module.exports.add = function(req, res) {
       Portfolio.findByIdAndUpdate(transaction.portfolio,
         {$push: {'transactions': transaction._id}},
         {safe: true, upsert: true}, function(err, transaction) {
-          if (err) {
-            res.send(err)
-          }
+          if (err) res.send(err);
         }
       );
 

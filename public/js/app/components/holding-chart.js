@@ -21,7 +21,7 @@ Plum.HoldingChartComponent = Ember.Component.extend({
       // Create a deep clone of the object
       var _obj = JSON.parse(JSON.stringify(obj));
 
-      _obj.value = holding.get('percent');
+      _obj.value = holding.get('value');
       _obj.label = holding.get('ticker');
 
       // If on second last color

@@ -90,3 +90,21 @@ Ember.Handlebars.helper('multiply', function(a, b, opts) {
   
   return '--';
 });
+
+/**
+* Format a date
+*/
+Ember.Handlebars.helper('date', function(value) {
+  if (value !== null) {
+    var date = new Date(value),
+        options = {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        };
+
+    return date.toLocaleDateString('en-us', options);
+  }
+
+  return '--';
+});

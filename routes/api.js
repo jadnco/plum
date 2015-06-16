@@ -48,7 +48,7 @@ router.route('/portfolios')
   })
   .post(function(req, res) {
     portfolios.add(req, res);
-  })
+  });
 
 /**
 * -- Transaction ---------->
@@ -59,7 +59,7 @@ var transactions = require('./api/transaction');
 router.route('/transactions')
   .post(function(req, res) {
     transactions.add(req, res);
-  })
+  });
 
 router.route('/transactions/:id')
   .get(function(req, res) {
@@ -78,7 +78,7 @@ router.route('/portfolios/:q/transactions')
     var _query = query(req.params.q, {slug: req.params.q});
 
     transactions.getByQuery(req, res, _query);
-  })
+  });
 
 /**
 * -- User ---------->

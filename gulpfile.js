@@ -22,7 +22,7 @@ gulp.task('styles', function() {
     .pipe(autoprefixer('last 2 versions'))
     .on('error', util.log)
     .pipe(gulp.dest('public/css/'))
-    .pipe(browserSync.reload({stream: true}))
+    //.pipe(browserSync.reload({stream: true}));
 });
 
 gulp.task('scripts', function() {
@@ -31,7 +31,7 @@ gulp.task('scripts', function() {
   .on('error', util.log)
   //.pipe(uglify())
   //.on('error', util.log)
-  .pipe(gulp.dest('public/js/'))
+  .pipe(gulp.dest('public/js/'));
 });
 
 gulp.task('templates', function() {
@@ -47,4 +47,4 @@ gulp.task('watch', function() {
   gulp.watch('public/js/**/*.js', ['scripts']);
 });
 
-gulp.task('default', ['serve', 'templates', 'styles', 'watch', 'scripts']);
+gulp.task('default', ['templates', 'styles', 'watch', 'scripts']);
