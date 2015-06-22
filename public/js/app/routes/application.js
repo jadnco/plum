@@ -1,3 +1,8 @@
+/**
+* public/js/app/routes/application.js
+* -
+* Main route; first access point
+*/
 Plum.ApplicationRoute = Ember.Route.extend({
   actions: {
     createNewPortfolio: function() {
@@ -74,7 +79,6 @@ Plum.ApplicationRoute = Ember.Route.extend({
       }
     },
     error: function(err) {
-      /*Plum.Logger.error(err);*/
       this.transitionTo('/not-found');
       console.log("An error: " + err.message);
     }

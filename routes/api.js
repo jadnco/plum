@@ -1,3 +1,8 @@
+/**
+* routes/api.js
+* -
+* Define all API routes
+*/
 var express = require('express');
 var router = express.Router();
 var query = require('../functions').query;

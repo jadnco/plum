@@ -18,18 +18,23 @@ Plum.QuoteRoute = Ember.Route.extend({
       var self  = this,
           store = self.store,
           newTrade = self.controller.get('newTrade'),
-
           message = 'Please fill all fields.';
 
       // Set trade value; round to two decimals
       newTrade.value = Math.round((newTrade.shares * newTrade.price) * 100) / 100;
 
       var newTradeLength = Object.keys(newTrade).length;
+      var tradeData = {
+        ticker: newTrade.ticker,
+        value: parseFloat(newTrade.value),
+        shares: parseInt(newTrade.shares),
+        overallReturn: null,
+        percent: null
+      };
 
       var counter = 0;
 
-      console.log(newTrade);
-
+      console.log('/--- NEW TRADE --->');
       // Loop through portfolio keys
       for (var key in newTrade) {
         var value = (newTrade[key] || '').toString().trim();
@@ -46,19 +51,24 @@ Plum.QuoteRoute = Ember.Route.extend({
 
             /** TODO:
               - Push holdings to portfolio
-
             */
-            // Create new portfolio record
-            /*var record = store.createRecord('portfolio', {
-              name: portfolio.name,
-              cash: parseFloat(portfolio.cash),
-              owner: owner
-            });
 
+            console.log('----> STORE <------');
+            store.find('portfolio', newTrade.portfolio).then(function(portfolio) {
+              portfolio.get('holdings').pushObject(tradeData);
+              console.log(portfolio.get('holdings'));
+
+              // Save record to the database
+              //portfolio.save();
+              console.log('<<---->> PORTFOLIO SAVED <<---->>');
+              console.log(portfolio);
+              console.log(tradeData);
+            });
+            /*
             // Save the portfolio record
             record.save().then(function(_portfolio) {
               self.transitionTo('portfolio', _portfolio.get('id'));
-            });
+            }); */
 
             // Send close action to controller*/
             self.controller.send('closeNewTradeModal');
@@ -75,6 +85,8 @@ Plum.QuoteRoute = Ember.Route.extend({
 
         counter++;
       }
+
+      console.log('------------------/');
     },
     loading: function() {
       $('#loading').fadeIn(80);

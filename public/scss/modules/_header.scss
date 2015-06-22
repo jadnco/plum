@@ -45,17 +45,21 @@
     margin-top: 0 !important;
     overflow: visible;
     display: table;
+    width: 360px;
 
     ul#search-results {
-      outline: 1px solid green;
       list-style: none;
       position: absolute;
       left: 0;
       top: 40px;
       opacity: 0;
       visibility: hidden;
-      display: inline;
-      transform: scale(.97) translateY(-50px);
+      text-align: left;
+      overflow: hidden;
+      padding: 0;
+      display: table;
+      border-color: transparent;
+      transform: translateY(-20px);
       transition: 0.2s cubic-bezier(.3, 0, 0, 1.3);
       
       li {
@@ -64,8 +68,6 @@
         line-height: 1.4;
         background: color(white);
         display: block;
-        border-left: 1px solid color(light);
-        border-right: 1px solid color(light);
         border-bottom: 1px solid color(light);
 
         a {
@@ -73,8 +75,8 @@
           text-decoration: none;
         }
 
-        &:first-of-type {
-          border-top: 1px solid color(light);
+        &:last-of-type {
+          border-bottom: none;
         }
 
         &:hover {
@@ -107,6 +109,8 @@
         transform: none;
         opacity: 1;
         visibility: visible;
+        border-color: color(light);
+        z-index: 997;
       }
     }
   }

@@ -18,10 +18,9 @@
           </div>
 
           <div class="module graph">
+            <div class="trade-time">{{time lastTradeTime}}</div>
             {{quote-chart quote=id data=content}}
           </div>
-
-          <div>{{time lastTradeTime}}</div>
 
           {{#modal-overlay id='new-trade-modal'}}
             <h2>New Trade</h2>

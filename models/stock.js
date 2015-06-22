@@ -1,3 +1,8 @@
+/**
+* models/stock.js
+* -
+* Stock data model
+*/
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 

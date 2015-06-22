@@ -10,12 +10,15 @@
   }
 
   .graph {
-    height: 400px;
     border: 1px solid color(light);
     border-radius: $border-radius;
     margin: ws(large) 0;
     padding: ws(medium);
     background: color(white);
+
+    .trade-time {
+      float: right;
+    }
   }
 
   .price,

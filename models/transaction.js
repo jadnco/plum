@@ -1,3 +1,8 @@
+/**
+* models/transaction.js
+* -
+* Transaction data model
+*/
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var Stock = require('./stock');
@@ -24,7 +29,9 @@ var TransactionSchema = new Schema({
   }
 });
 
+// Before a new transaction is saved
 TransactionSchema.pre('save', function(next) {
+  // Calculate value, round to two decimals
   this.value = Math.round((this.shares * this.price) * 100) / 100;
 
   next();

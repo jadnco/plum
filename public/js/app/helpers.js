@@ -1,4 +1,10 @@
 /**
+* public/js/app/helpers.js
+* -
+* Handlebars helper methods
+*/
+
+/**
 * Converts number value '1839048' into '1,839,048'
 */
 Ember.Handlebars.helper('withCommas', function(value, opts) {

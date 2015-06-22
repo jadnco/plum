@@ -1,3 +1,8 @@
+/**
+* functions.js
+* -
+* General functions used in back-end
+*/
 var md5 = require('MD5');
 
 module.exports = {
@@ -10,8 +15,10 @@ module.exports = {
       .replace(/-+$/, '');
   },
   query: function(id, q) {
-    if (id != undefined) {
-      var query = {$or: [q]};
+    var query;
+
+    if (id !== undefined) {
+      query = {$or: [q]};
 
       if (id.match(/^[0-9a-fA-F]{24}$/)) {
         query.$or.push({_id: id});

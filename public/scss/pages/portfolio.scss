@@ -1,7 +1,17 @@
 #portfolio {
   #recent-transactions {
+    h3 {
+      float: left;
+    }
+
     .new-transaction.btn {
       float: right;
+    }
+
+    .no-transactions {
+      margin-top: ws(medium);
+      text-align: center;
+      clear: both;
     }
 
     table {
@@ -27,7 +37,6 @@
       td:not(:first-of-type) {
         text-align: right;
       }
-
 
       th:nth-of-type(2),
       td:nth-of-type(2) {

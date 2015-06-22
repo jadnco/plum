@@ -1,3 +1,8 @@
+/**
+* public/js/app/router.js
+* -
+* Ember route map
+*/
 Plum.Router.map(function() {
   this.resource('portfolios', {path: '/'});
 

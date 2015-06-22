@@ -1,14 +1,14 @@
 <div id="main-search">
   {{input placeholder='Search Ticker' valueBinding='term' role='search'}}
   
-  <ul id="search-results">
+  <ul id="search-results" class="module">
     {{#if isSearching}}
       {{#each stock in stocks}}
         
           <li {{action clearSearch}}>
-          {{#link-to 'quote' stock.id bubbles=true}}
-            <span class="ticker">{{stock.id}}</span>
-            <span class="name">{{truncate 30 stock.name}}</span>
+            {{#link-to 'quote' stock.id bubbles=true}}
+              <span class="ticker">{{stock.id}}</span>
+              <span class="name">{{truncate 30 stock.name}}</span>
             {{/link-to}}
           </li>
         

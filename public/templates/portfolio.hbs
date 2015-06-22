@@ -3,7 +3,8 @@
     <div class="row">
       <section class="module seven columns">
         <h2>{{name}}</h2>
-        <div class="red btn" {{action delete portfolio}}>Delete</div>
+        <button class="btn" {{action deposit portfolio}}>Deposit Cash</button>
+        <button class="red btn" {{action delete portfolio}}>Delete</button>
       </section>
       <!-- section id="holdings" class="module seven columns">
         <h3>Holdings</h3>
@@ -13,8 +14,10 @@
         <a class="view-more" href="">View More</a>
       </section -->
       <section id="recent-transactions" class="module five columns">
-        <h3>Transactions</h3>
-        <button class="new-transaction btn" {{action 'newTransaction'}}>New</button>
+        <div class="cf">
+          <h3>Transactions</h3>
+          <button class="new-transaction btn" {{action 'newTransaction'}}>New</button>
+        </div>
         
           {{#if transactions}}
             <table>
@@ -38,7 +41,7 @@
               {{/each}}
             </table>
           {{else}}
-            <div>There are no transactions.</div>
+            <div class="no-transactions">There are no transactions.</div>
           {{/if}}
         </table>
 

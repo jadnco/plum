@@ -49,9 +49,8 @@ Plum.QuoteChartComponent = Ember.Component.extend({
       var quoteChart = new Chart(ctx).Line(data, self.get('options'));
     });*/
     // Draw the chart when promise fullfilled
-    console.log(self.get('quote'));
-      var ctx = $('#' + self.get('quote')).get(0).getContext("2d");
-      var quoteChart = new Chart(ctx).Line(data, self.get('options'));
+    var ctx = $('#' + self.get('quote')).get(0).getContext("2d");
+    var quoteChart = new Chart(ctx).Line(data, self.get('options'));
   },
   didInsertElement: function() {
     this.drawChart();
