@@ -223,6 +223,45 @@ Response:
 }
 ```
 
+#### POST
+
+Create a new portfolio record
+
+##### Example
+
+> POST /api/portfolios
+
+Request:
+
+```json
+{
+  "portfolio": {
+    "name": "Blue Chips",
+    "owner": "554385e8cd2d66a1562cd7b9",
+    "cash": 25000
+  }
+}
+```
+
+Response:
+
+```json
+{
+  "portfolio": {
+    "slug": "blue-chips",
+    "name": "Blue Chips",
+    "owner": "554385e8cd2d66a1562cd7b9",
+    "_id": "55944998509e2ef62419471e",
+    "transactions": [],
+    "holdings": [],
+    "created": "2015-07-01T20:12:08.941Z",
+    "overallReturn": 0,
+    "cash": 25000,
+    "value": 25000
+  }
+}
+```
+
 ---
 
 ### Transactions
