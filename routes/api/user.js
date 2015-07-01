@@ -34,7 +34,7 @@ module.exports.update = function(req, res, query) {
 
   User.findOneAndUpdate(query, {$set: updated}, function(err, user) {
     if (err) res.send(err);
-    else res.json({user: user});
+    else res.sendStatus(200);
   });
 };
 
