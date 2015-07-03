@@ -7,6 +7,7 @@ Stock portfolio simulator.
 Dependencies:
   - [Node.js](https://nodejs.org)
   - [MongoDB](https://www.mongodb.org)
+  - [Gulp](http://gulpjs.com)
 
 ## Running the app
 
@@ -26,6 +27,12 @@ Start the server; I use [Nodemon](https://github.com/remy/nodemon) to restart th
 
 ```bash
 nodemon
+```
+
+Run the default Gulp task to build files:
+
+```bash
+gulp
 ```
 
 The app will now be running on `http://localhost:3000`
