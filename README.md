@@ -48,6 +48,7 @@ The app will now be running on `http://localhost:3000`
   - Ability to edit portfolio name.
   - Create new transaction from portfolio view.
   - Responsive styling.
+  - Add client-side toggle to switch b/w light and dark themes.
   - User authentication.
 
 ## API
