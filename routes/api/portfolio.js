@@ -7,7 +7,6 @@ var mongoose = require('mongoose');
 var Portfolio = require('../../models/portfolio');
 var User = require('../../models/user');
 var slugify = require('../../functions').slugify;
-var colors = require('colors');
 
 // Create a new portfolio
 module.exports.add = function(req, res) {
@@ -23,7 +22,7 @@ module.exports.add = function(req, res) {
           if (err) res.send(err);
           else res.json({portfolio: portfolio});
 
-          console.log(('Created portfolio: ' + portfolio.name).bgGreen.black);  
+          console.log(('Created portfolio: ' + portfolio.name));  
         }
       );
     } 
@@ -74,7 +73,7 @@ module.exports.update = function(req, res, query) {
     if (err) res.send(err);
     else res.json({portfolio: portfolio});
 
-    console.log(('Updated portfolio: ' + portfolio.name).bgBlue.white);
+    console.log(('Updated portfolio: ' + portfolio.name));
   });
 };
 
@@ -91,7 +90,7 @@ module.exports.delete = function(req, res, query) {
         }
       );
 
-      console.log(('Deleted portfolio: ' + portfolio.name).bgRed.white);
+      console.log(('Deleted portfolio: ' + portfolio.name));
     }
   });
 };
