@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/jadnco/Plum.git"
