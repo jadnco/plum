@@ -47,6 +47,8 @@ Plum.ApplicationRoute = Ember.Route.extend({
 
               // Send close action to controller
               self.controller.send('closeNewPortfolioModal');
+
+              break;
             }
           }
         } else {

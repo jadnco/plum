@@ -34,43 +34,25 @@ Plum.QuoteRoute = Ember.Route.extend({
 
       var counter = 0;
 
-      console.log('/--- NEW TRADE --->');
       // Loop through portfolio keys
       for (var key in newTrade) {
         var value = (newTrade[key] || '').toString().trim();
 
-        console.log(key + ' => ' + value);
-
-        // Values is set
+        // Value is set
         if (value.length > 0) {
 
           // All values are filled
           if (counter === (newTradeLength - 1)) {
-            
-            console.log('All values set!');
-
-            /** TODO:
-              - Push holdings to portfolio
-            */
-
-            console.log('----> STORE <------');
             store.find('portfolio', newTrade.portfolio).then(function(portfolio) {
-              portfolio.get('holdings').pushObject(tradeData);
-              console.log(portfolio.get('holdings'));
+              var _trade = store.createRecord('holding', tradeData);
+
+              portfolio.get('holdings').pushObject(_trade);
 
               // Save record to the database
-              //portfolio.save();
-              console.log('<<---->> PORTFOLIO SAVED <<---->>');
-              console.log(portfolio);
-              console.log(tradeData);
+              portfolio.save();
             });
-            /*
-            // Save the portfolio record
-            record.save().then(function(_portfolio) {
-              self.transitionTo('portfolio', _portfolio.get('id'));
-            }); */
 
-            // Send close action to controller*/
+            // Send close action to controller
             self.controller.send('closeNewTradeModal');
           }
         } else {
