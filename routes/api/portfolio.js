@@ -34,7 +34,7 @@ module.exports.getAll = function(req, res) {
   Portfolio.find(function(err, portfolios) {
     if (err) res.send(err);
     else res.json({portfolios: portfolios});
-  }).sort('-created');
+  }).sort('-modified');
 };
 
 module.exports.get = function(req, res, query) {

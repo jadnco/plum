@@ -1,18 +1,23 @@
 Plum.PortfolioController = Ember.ObjectController.extend({
+  needs: 'application',
+  newDeposit: {
+    cash: null
+  },
   actions: {
-    delete: function() {
-      var self = this;
-      var confirmation = confirm('Delete \'' + this.get('name') + '\'?');
-      
-      // Make sure we have user confirmation
-      if (confirmation) {
-        // Find portfolio record and delete it
-        this.store.find('portfolio', this.get('id')).then(function(portfolio) {
-          portfolio.destroyRecord();
+    showNewDepositModal: function() {
+      $('#new-deposit-modal').find('.modal').addClass('visible');
+      $('#new-deposit-modal').find('.overlay').addClass('visible');
+    },
+    closeNewDepositModal: function() {
+      this.set('newDeposit.cash', null);
 
-          self.transitionTo('portfolios');
-        });
-      }
+      $('#new-deposit-modal').find('.modal').removeClass('visible');
+      $('#new-deposit-modal').find('.overlay').removeClass('visible');
+
+      // Clear values
+      $('#new-deposit-modal').find('input[name=cash]').val('');
+      $('#new-deposit-modal').find('.form-error').text('');
+      $('#new-deposit-modal').find('.total-value').text('');
     }
   }
 });

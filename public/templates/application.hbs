@@ -16,7 +16,7 @@
 
           <form id="new-portfolio-form" {{action createNewPortfolio on='submit'}}>
             {{input type='text' name='name' value=newPortfolio.name placeholder='Name'}}
-            {{input type='number' step='250' min='0' name='cash' value=newPortfolio.cash placeholder='Cash'}}
+            {{input type='number' step='any' min='0' name='cash' value=newPortfolio.cash placeholder='Cash'}}
 
             <div class="form-error"></div>
 

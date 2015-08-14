@@ -3,7 +3,26 @@
     <div class="row">
       <section class="module seven columns">
         <h2>{{name}}</h2>
-        <button class="btn" {{action deposit portfolio}}>Deposit Cash</button>
+        <button class="btn" {{action showNewDepositModal}}>Deposit Cash</button>
+
+        {{#modal-overlay id='new-deposit-modal'}}
+            <h2>Desposit Cash</h2>
+            <div>Use the form to deposit cash to <strong>{{name}}</strong></div>
+
+            <form id="new-deposit-form" {{action depositCash on='submit'}}>
+              <span class="old-cash">{{currency cash}} &plus;</span>
+              
+              {{input type='number' min='0.01' step='0.01' name='newDeposit' value=newDeposit.cash placeholder='New deposit'}}
+
+              {{#if newDeposit.cash}}
+                <div class="total-cash">Total cash: ${{add cash newDeposit.cash}}</div>
+              {{/if}}
+
+              <div class="form-error"></div>
+
+              {{input type='submit' value='Submit'}}
+            </form>
+          {{/modal-overlay}}
         <button class="red btn" {{action delete portfolio}}>Delete</button>
       </section>
       <!-- section id="holdings" class="module seven columns">

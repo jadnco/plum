@@ -89,9 +89,24 @@ Ember.Handlebars.helper('percent', function(value, opts) {
 */
 Ember.Handlebars.helper('multiply', function(a, b, opts) {
   if (a !== null && b !== null) {
-    var multiply = a * b;
-    
-    return multiply.toFixed(2);
+    var product = a * b;
+
+    return product.toFixed(2);
+  }
+  
+  return '--';
+});
+
+/**
+* Add two values
+*/
+Ember.Handlebars.helper('add', function(a, b, opts) {
+  if (a !== null && b !== null) {
+    console.log("cash: " + a);
+    console.log("new deposit: " +b);
+    var sum = parseInt(a) + parseInt(b);
+
+    return sum.toFixed(2);
   }
   
   return '--';
