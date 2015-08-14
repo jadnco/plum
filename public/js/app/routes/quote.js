@@ -44,16 +44,32 @@ Plum.QuoteRoute = Ember.Route.extend({
           // All values are filled
           if (counter === (newTradeLength - 1)) {
             store.find('portfolio', newTrade.portfolio).then(function(portfolio) {
-              var _trade = store.createRecord('holding', tradeData);
+              // Make sure there is enough cash to cover buy
+              if (tradeData.value > portfolio.get('cash')) {
+                message = 'There isn\'t enough cash to cover this purchase.';
 
-              portfolio.get('holdings').pushObject(_trade);
+                $('#new-trade-form').find('.form-error').text(message);
+              } else {
+                var _trade = store.createRecord('holding', tradeData),
+                    _cash  = portfolio.get('cash');
 
-              // Save record to the database
-              portfolio.save();
+                /** TODO:
+                  - If holding already exists from share, don't create new one
+                */
+
+                // Push the new purchase to holdings
+                portfolio.get('holdings').pushObject(_trade);
+                
+                // Subtract purchase value from cash
+                portfolio.set('cash', (_cash - tradeData.value));
+
+                // Save record to the database
+                portfolio.save();
+
+                // Send close action to controller
+                self.controller.send('closeNewTradeModal');
+              }
             });
-
-            // Send close action to controller
-            self.controller.send('closeNewTradeModal');
           }
         } else {
           if (key === 'portfolio') {

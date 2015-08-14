@@ -8,6 +8,7 @@
               <div class="name">{{portfolio.name}}</div>
               <div class="value">{{currency portfolio.value}}</div>
               <div class="date">{{date portfolio.created}}</div>
+              <div>Cash: {{currency portfolio.cash}}</div>
               
               {{holding-chart slug=portfolio.id holdings=portfolio.holdings}}
 
