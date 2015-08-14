@@ -17,13 +17,11 @@ Plum.QuoteRoute = Ember.Route.extend({
     addToPortfolio: function() {
       var self  = this,
           store = self.store,
-          newTrade = self.controller.get('newTrade'),
-          message = 'Please fill all fields.';
+          newTrade = self.controller.get('newTrade');
 
       // Set trade value; round to two decimals
-      newTrade.value = Math.round((newTrade.shares * newTrade.price) * 100) / 100;
+      newTrade.value = decimals(2, newTrade.shares * newTrade.price);
 
-      var newTradeLength = Object.keys(newTrade).length;
       var tradeData = {
         ticker: newTrade.ticker,
         value: parseFloat(newTrade.value),
@@ -32,59 +30,37 @@ Plum.QuoteRoute = Ember.Route.extend({
         percent: null
       };
 
-      var counter = 0;
+      if (checkFields($('#new-trade-form'), newTrade)) {
+        store.find('portfolio', newTrade.portfolio).then(function(portfolio) {
+          // Make sure there is enough cash to cover buy
+          if (tradeData.value > portfolio.get('cash')) {
+            message = 'There isn\'t enough cash to cover this purchase.';
 
-      // Loop through portfolio keys
-      for (var key in newTrade) {
-        var value = (newTrade[key] || '').toString().trim();
+            $('#new-trade-form').find('.form-error').text(message);
+          } else {
+            var _trade = store.createRecord('holding', tradeData),
+                _cash  = portfolio.get('cash');
 
-        // Value is set
-        if (value.length > 0) {
+            /** TODO:
+              - If holding already exists from share, don't create new one
+            */
 
-          // All values are filled
-          if (counter === (newTradeLength - 1)) {
-            store.find('portfolio', newTrade.portfolio).then(function(portfolio) {
-              // Make sure there is enough cash to cover buy
-              if (tradeData.value > portfolio.get('cash')) {
-                message = 'There isn\'t enough cash to cover this purchase.';
+            // Push the new purchase to holdings
+            portfolio.get('holdings').pushObject(_trade);
+            
+            // Subtract purchase value from cash
+            portfolio.set('cash', (_cash - tradeData.value));
 
-                $('#new-trade-form').find('.form-error').text(message);
-              } else {
-                var _trade = store.createRecord('holding', tradeData),
-                    _cash  = portfolio.get('cash');
+            // Save record to the database
+            portfolio.save();
 
-                /** TODO:
-                  - If holding already exists from share, don't create new one
-                */
+            console.log('portfolio saved');
 
-                // Push the new purchase to holdings
-                portfolio.get('holdings').pushObject(_trade);
-                
-                // Subtract purchase value from cash
-                portfolio.set('cash', (_cash - tradeData.value));
-
-                // Save record to the database
-                portfolio.save();
-
-                // Send close action to controller
-                self.controller.send('closeNewTradeModal');
-              }
-            });
+            // Send close action to controller
+            self.controller.send('closeNewTradeModal');
           }
-        } else {
-          if (key === 'portfolio') {
-            message = 'Please select a portfolio.';
-          }
-
-          $('#new-trade-form').find('.form-error').text(message);
-
-          break;
-        }
-
-        counter++;
+        });
       }
-
-      console.log('------------------/');
     },
     loading: function() {
       $('#loading').fadeIn(80);

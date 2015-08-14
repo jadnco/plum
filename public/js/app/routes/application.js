@@ -8,57 +8,35 @@ Plum.ApplicationRoute = Ember.Route.extend({
     createNewPortfolio: function() {
       var self  = this,
           store = self.store,
-          portfolio = self.controller.get('newPortfolio'),
-          portfolioLength = Object.keys(portfolio).length,
+          newPortfolio = self.controller.get('newPortfolio'),
+          portfolioLength = length(portfolio),
 
           owner = self.controller.get('user'),
 
           message = 'Please set both values.';
 
-      var counter = 0;
+      if (checkFields($('#new-portfolio-form'), newPortfolio)) {
+        if (isNaN(parseFloat(newPortfolio.cash))) {
+          message = 'Cash needs to be a number';
 
-      // Loop through portfolio keys
-      for (var key in portfolio) {
-        var value = (portfolio[key] || '').trim();
-
-        // Values is set
-        if (value.length > 0) {
-
-          // All values are filled
-          if (counter === (portfolioLength - 1)) {
-            if (isNaN(parseFloat(value))) {
-              message = 'Cash needs to be a number';
-
-              $('#new-portfolio-form').find('.form-error').text(message);
-
-              break;
-            } else {
-              // Create new portfolio record
-              var record = store.createRecord('portfolio', {
-                name: portfolio.name,
-                cash: parseFloat(portfolio.cash),
-                owner: owner
-              });
-
-              // Save the portfolio record
-              record.save().then(function(_portfolio) {
-                self.transitionTo('portfolio', _portfolio.get('id'));
-              });
-
-              // Send close action to controller
-              self.controller.send('closeNewPortfolioModal');
-
-              break;
-            }
-          }
-        } else {
           $('#new-portfolio-form').find('.form-error').text(message);
+        } else {
+          // Create new portfolio record
+          var record = store.createRecord('portfolio', {
+            name: newPortfolio.name,
+            cash: parseFloat(newPortfolio.cash),
+            owner: owner
+          });
 
-          break;
+          // Save the portfolio record
+          record.save().then(function(_portfolio) {
+            self.transitionTo('portfolio', _portfolio.get('id'));
+          });
+
+          // Send close action to controller
+          self.controller.send('closeNewPortfolioModal');
         }
-
-        counter++;
-      }
+      } else console.log('missing a field');
       
 
       //self.get('store').reload();
