@@ -24,6 +24,7 @@ Plum.QuoteRoute = Ember.Route.extend({
 
       var tradeData = {
         ticker: newTrade.ticker,
+        price: parseFloat(newTrade.price),
         value: parseFloat(newTrade.value),
         shares: parseInt(newTrade.shares),
         overallReturn: null,
@@ -39,7 +40,22 @@ Plum.QuoteRoute = Ember.Route.extend({
             $('#new-trade-form').find('.form-error').text(message);
           } else {
             var _trade = store.createRecord('holding', tradeData),
-                _cash  = portfolio.get('cash');
+                _cash  = portfolio.get('cash'),
+                stock  = store.createRecord('stock', {
+                  ticker: tradeData.ticker,
+                  name: self.get('name'),
+                  exchange: self.get('stockExchange')
+                }),
+                transaction = store.createRecord('transaction', {
+                  type: 'buy',
+                  shares: tradeData.shares,
+                  price: tradeData.price,
+                  value: tradeData.value,
+                  portfolio: portfolio.get('_id')
+                });
+
+            transaction.set('stock', stock);
+            portfolio.get('transactions').pushObject(transaction);
 
             /** TODO:
               - If holding already exists from share, don't create new one

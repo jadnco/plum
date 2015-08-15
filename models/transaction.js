@@ -21,11 +21,6 @@ var TransactionSchema = new Schema({
   close: {
     type: Date,
     default: Date.now
-  },
-  // Portfolio relation
-  portfolio: {
-    type: Schema.Types.ObjectId,
-    ref: 'Portfolio'
   }
 });
 
@@ -37,4 +32,4 @@ TransactionSchema.pre('save', function(next) {
   next();
 });
 
-module.exports = mongoose.model('Transaction', TransactionSchema);
+module.exports = TransactionSchema;

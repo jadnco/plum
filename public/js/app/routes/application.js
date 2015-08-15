@@ -9,7 +9,7 @@ Plum.ApplicationRoute = Ember.Route.extend({
       var self  = this,
           store = self.store,
           newPortfolio = self.controller.get('newPortfolio'),
-          portfolioLength = length(portfolio),
+          portfolioLength = length(newPortfolio),
 
           owner = self.controller.get('user'),
 

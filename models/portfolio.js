@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var slugify = require('../functions').slugify;
 var Holding = require('./holding');
+var Transaction = require('./transaction');
 
 var PortfolioSchema = new Schema({
   name: String,
@@ -31,10 +32,7 @@ var PortfolioSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User'
   },
-  transactions: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Transcation'
-  }]
+  transactions: [Transaction]
 });
 
 PortfolioSchema.pre('save', function(next) {

@@ -11,9 +11,8 @@ var StockSchema = new Schema({
   name: String,
   // Company ticker; eg. AAPL
   ticker: String,
-  sector: String,
   // Trading exchange; eg. NYSE
   exchange: String
-}, {_id: false});
+});
 
 module.exports = StockSchema;

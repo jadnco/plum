@@ -1,4 +1,5 @@
 Plum.Portfolio = DS.Model.extend({
+  _id: DS.attr(),
   name: DS.attr(),
   slug: DS.attr(),
   value: DS.attr(),
@@ -9,5 +10,5 @@ Plum.Portfolio = DS.Model.extend({
   holdings: DS.hasMany('holding'),
   owner: DS.belongsTo('user'),
   // Automatically load transactions for ref ids
-  transactions: DS.hasMany('transaction', {async: true})
+  transactions: DS.hasMany('transaction')
 });

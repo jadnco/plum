@@ -5,6 +5,17 @@
 */
 
 /**
+* Replace null value with dashes
+*/
+Ember.Handlebars.helper('dashes', function(value, opts) {
+  if (value !== null) {
+    return value;
+  }
+  
+  return '--';
+});
+
+/**
 * Converts number value '1839048' into '1,839,048'
 */
 Ember.Handlebars.helper('withCommas', function(value, opts) {
@@ -102,9 +113,7 @@ Ember.Handlebars.helper('multiply', function(a, b, opts) {
 */
 Ember.Handlebars.helper('add', function(a, b, opts) {
   if (a !== null && b !== null) {
-    console.log("cash: " + a);
-    console.log("new deposit: " +b);
-    var sum = parseInt(a) + parseInt(b);
+    var sum = parseFloat(a) + parseFloat(b);
 
     return sum.toFixed(2);
   }

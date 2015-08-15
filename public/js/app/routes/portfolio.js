@@ -4,7 +4,6 @@ Plum.PortfolioRoute = Ember.Route.extend({
   },
   setupController: function(controller, portfolio) {
     controller.set('model', portfolio);
-    portfolio.get('transactions').reload();
     portfolio.reload();
 
     console.log(portfolio);
@@ -30,7 +29,19 @@ Plum.PortfolioRoute = Ember.Route.extend({
           newDeposit = self.controller.get('newDeposit');
 
       if (checkFields($('#new-deposit-form'), newDeposit)) {
-        var oldCash = parseFloat(model.get('cash'));
+        var oldCash = parseFloat(model.get('cash')),
+            transaction = self.store.createRecord('transaction', {
+              type: 'deposit',
+              shares: null,
+              price: null,
+              value: parseFloat(newDeposit.cash),
+              portfolio: model.get('_id')
+            });
+
+        transaction.set('stock', [{
+          ticker: null
+        }]);
+        model.get('transactions').pushObject(transaction);
 
         // Update cash property
         model.set('cash', (parseFloat(newDeposit.cash) + oldCash));

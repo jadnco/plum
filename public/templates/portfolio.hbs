@@ -49,13 +49,13 @@
               </tr>
               {{#each transaction in transactions}}
                 <tr>
-                  {{#each stock in transaction.stocks}}
-                    <td>{{#link-to 'quote' stock.id}}{{stock.id}}{{/link-to}}</td>
+                  {{#each stock in transaction.stock}}
+                    <td>{{#link-to 'quote' stock.ticker}}{{dashes stock.ticker}}{{/link-to}}</td>
                   {{/each}}
-                  <td>{{transaction.type}}</td>
-                  <td>{{transaction.price}}</td>
-                  <td>{{transaction.shares}}</td>
-                  <td>{{transaction.value}}</td>
+                  <td>{{dashes transaction.type}}</td>
+                  <td>{{dashes transaction.price}}</td>
+                  <td>{{dashes transaction.shares}}</td>
+                  <td>{{currency transaction.value}}</td>
                 </tr>
               {{/each}}
             </table>

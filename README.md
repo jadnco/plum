@@ -44,7 +44,7 @@ The app will now be running on `http://localhost:3000`
   - Update holdings on new transaction.
   - ~~Add share purchase limit based on cash.~~
   - Compare current portfolio value to live value.
-  - Deposit cash to portfolio, after creation.
+  - ~~Deposit cash to portfolio, after creation.~~
   - Ability to edit portfolio name.
   - Add loading indicator to ticker search
   - Create new transaction from portfolio view.
