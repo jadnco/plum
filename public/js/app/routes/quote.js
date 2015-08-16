@@ -41,20 +41,15 @@ Plum.QuoteRoute = Ember.Route.extend({
           } else {
             var _trade = store.createRecord('holding', tradeData),
                 _cash  = portfolio.get('cash'),
-                stock  = store.createRecord('stock', {
-                  ticker: tradeData.ticker,
-                  name: self.get('name'),
-                  exchange: self.get('stockExchange')
-                }),
                 transaction = store.createRecord('transaction', {
                   type: 'buy',
+                  ticker: tradeData.ticker,
                   shares: tradeData.shares,
                   price: tradeData.price,
                   value: tradeData.value,
                   portfolio: portfolio.get('_id')
                 });
 
-            transaction.set('stock', stock);
             portfolio.get('transactions').pushObject(transaction);
 
             /** TODO:

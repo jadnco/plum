@@ -10,13 +10,14 @@ Plum.PortfolioRoute = Ember.Route.extend({
   },
   actions: {
     delete: function() {
-      var self = this;
-      var confirmation = confirm('Delete \'' + this.get('name') + '\'?');
+      var self = this,
+          model = self.controller.get('model'),
+          confirmation = confirm('Delete \'' + model.get('name') + '\'?');
       
       // Make sure we have user confirmation
       if (confirmation) {
         // Find portfolio record and delete it
-        this.store.find('portfolio', this.get('id')).then(function(portfolio) {
+        self.store.find('portfolio', model.get('id')).then(function(portfolio) {
           portfolio.destroyRecord();
 
           self.transitionTo('portfolios');
@@ -32,15 +33,13 @@ Plum.PortfolioRoute = Ember.Route.extend({
         var oldCash = parseFloat(model.get('cash')),
             transaction = self.store.createRecord('transaction', {
               type: 'deposit',
+              ticker: null,
               shares: null,
               price: null,
               value: parseFloat(newDeposit.cash),
               portfolio: model.get('_id')
             });
 
-        transaction.set('stock', [{
-          ticker: null
-        }]);
         model.get('transactions').pushObject(transaction);
 
         // Update cash property

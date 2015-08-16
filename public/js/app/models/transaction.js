@@ -4,5 +4,5 @@ Plum.Transaction = DS.Model.extend({
   shares: DS.attr(),
   price: DS.attr(),
   close: DS.attr(),
-  stock: DS.attr()
+  ticker: DS.attr()
 });

@@ -8,7 +8,6 @@ var Schema = mongoose.Schema;
 var Stock = require('./stock');
 
 var TransactionSchema = new Schema({
-  stock: [Stock],
   // Buy, Sell or Dividend
   type: String,
   // Total shares bought
@@ -17,6 +16,8 @@ var TransactionSchema = new Schema({
   price: Number,
   // Total value of trade
   value: Number,
+  // Stock company ticker
+  ticker: String,
   // Close time of transaction
   close: {
     type: Date,

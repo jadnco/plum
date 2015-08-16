@@ -9,6 +9,5 @@ Plum.Portfolio = DS.Model.extend({
   modified: DS.attr(),
   holdings: DS.hasMany('holding'),
   owner: DS.belongsTo('user'),
-  // Automatically load transactions for ref ids
   transactions: DS.hasMany('transaction')
 });
