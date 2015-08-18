@@ -1,6 +1,6 @@
 Plum.StockSearchComponent = Ember.Component.extend({
   term: '',
-  results: '',
+  results: null,
   isSearching: false,
   didInsertElement: function() {
     this.results = $('#search-results');
@@ -15,13 +15,19 @@ Plum.StockSearchComponent = Ember.Component.extend({
     this.results.removeClass('visible');
   },
   _search: function() {
-    Ember.run.debounce(this, this.search, 200);
+    // Make sure the field isn't empty
+    if (this.get('term').trim().length > 0) {
+      this.results.find('#indicator').show();
+
+      Ember.run.debounce(this, this.search, 200);
+    }
   }.observes('term'),
   search: function() {
     this.sendAction('action', this.get('term'));
-    this.set('isSearching', true);
+  
+    this.results.find('#indicator').hide();
 
-    this.results.addClass('visible');
+    this.set('isSearching', true);
   },
   actions: {
     clearSearch: function() {

@@ -3,6 +3,8 @@
   
   <ul id="search-results" class="module">
     {{#if isSearching}}
+      <li id="indicator">Searching...</li>
+
       {{#each stock in stocks}}
         
           <li {{action clearSearch}}>
