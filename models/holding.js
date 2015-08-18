@@ -4,9 +4,12 @@ var Schema = mongoose.Schema;
 var HoldingSchema = new Schema({
   ticker: String,
   shares: Number,
-  value: Number,
+  marketValue: Number,
   overallReturn: Number,
-  percent: Number
+  overallGain: Number,
+  dayChange: Number,
+  costBasis: Number,
+  lastPrice: Number
 });
 
 module.exports = HoldingSchema;

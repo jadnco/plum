@@ -1,7 +1,10 @@
 Plum.Holding = DS.Model.extend({
   ticker: DS.attr(),
   shares: DS.attr(),
-  value: DS.attr(),
+  marketValue: DS.attr(),
   overallReturn: DS.attr(),
-  percent: DS.attr()
+  overallGain: DS.attr(),
+  dayChange: DS.attr(),
+  costBasis: DS.attr(),
+  lastPrice: DS.attr()
 });

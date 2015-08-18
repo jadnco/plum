@@ -69,12 +69,41 @@ a {
   padding: ws(medium);
   border-radius: $border-radius;
   text-align: center;
+  display: block;
   background: color(white);
   box-shadow: 0 1px 2px color(light);
+
+  &.left {
+    margin-left: 0;
+  }
+
+  &.right {
+    margin-right: 0;
+  }
 
   h3 {
     float: left;
     margin-top: 6px;
+  }
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  margin-top: ws(medium);
+  display: inline-table;
+  clear: both;
+
+  th {
+    border-bottom: 1px solid color(light);
+    padding-bottom: ws(tiny);
+  }
+
+  tr:nth-of-type(2) {
+    td {
+      padding-top: ws(tiny);
+    }
   }
 }
 

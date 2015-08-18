@@ -24,11 +24,13 @@ Plum.QuoteRoute = Ember.Route.extend({
 
       var tradeData = {
         ticker: newTrade.ticker,
-        price: parseFloat(newTrade.price),
-        value: parseFloat(newTrade.value),
+        lastPrice: parseFloat(newTrade.price),
+        costBasis: parseFloat(newTrade.value),
         shares: parseInt(newTrade.shares),
+        marketValue: parseFloat(newTrade.value),
         overallReturn: null,
-        percent: null
+        overallGain: null,
+        dayChange: null
       };
 
       if (checkFields($('#new-trade-form'), newTrade)) {
@@ -45,8 +47,8 @@ Plum.QuoteRoute = Ember.Route.extend({
                   type: 'buy',
                   ticker: tradeData.ticker,
                   shares: tradeData.shares,
-                  price: tradeData.price,
-                  value: tradeData.value,
+                  price: tradeData.lastPrice,
+                  value: tradeData.costBasis,
                   portfolio: portfolio.get('_id')
                 });
 
@@ -60,7 +62,7 @@ Plum.QuoteRoute = Ember.Route.extend({
             portfolio.get('holdings').pushObject(_trade);
             
             // Subtract purchase value from cash
-            portfolio.set('cash', (_cash - tradeData.value));
+            portfolio.set('cash', (_cash - tradeData.costBasis));
 
             // Save record to the database
             portfolio.save();

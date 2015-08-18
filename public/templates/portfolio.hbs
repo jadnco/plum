@@ -1,69 +1,104 @@
 <main id="portfolio">
   <div class="inner">
     <div class="row">
-      <section class="module seven columns">
-        <h2>{{name}}</h2>
-        <button class="btn" {{action showNewDepositModal}}>Deposit Cash</button>
+      <div class="seven columns">
+        <section class="module seven">
+          <h2>{{name}}</h2>
+          <button class="btn" {{action showNewDepositModal}}>Deposit Cash</button>
 
-        {{#modal-overlay id='new-deposit-modal'}}
-            <h2>Desposit Cash</h2>
-            <div>Use the form to deposit cash to <strong>{{name}}</strong></div>
+          {{#modal-overlay id='new-deposit-modal'}}
+              <h2>Desposit Cash</h2>
+              <div>Use the form to deposit cash to <strong>{{name}}</strong></div>
 
-            <form id="new-deposit-form" {{action depositCash on='submit'}}>
-              <span class="old-cash">{{currency cash}} &plus;</span>
-              
-              {{input type='number' min='0.01' step='0.01' name='newDeposit' value=newDeposit.cash placeholder='New deposit'}}
+              <form id="new-deposit-form" {{action depositCash on='submit'}}>
+                <span class="old-cash">{{currency cash}} &plus;</span>
+                
+                {{input type='number' min='0.01' step='0.01' name='newDeposit' value=newDeposit.cash placeholder='New deposit'}}
 
-              {{#if newDeposit.cash}}
-                <div class="total-cash">Total cash: ${{add cash newDeposit.cash}}</div>
-              {{/if}}
+                {{#if newDeposit.cash}}
+                  <div class="total-cash">Total cash: ${{add cash newDeposit.cash}}</div>
+                {{/if}}
 
-              <div class="form-error"></div>
+                <div class="form-error"></div>
 
-              {{input type='submit' value='Submit'}}
-            </form>
-          {{/modal-overlay}}
-        <button class="red btn" {{action delete portfolio}}>Delete</button>
-      </section>
-      <!-- section id="holdings" class="module seven columns">
-        <h3>Holdings</h3>
-        
-        {{!holding-chart slug=id data=holdings}}
+                {{input type='submit' value='Submit'}}
+              </form>
+            {{/modal-overlay}}
+          <button class="red btn" {{action delete portfolio}}>Delete</button>
+        </section>
+        <section id="holdings" class="module">
+          <h3>Holdings</h3>
+          
+          <table id="holdings-table">
+            <tr>
+              <th>Ticker</th>
+              <th>Price</th>
+              <th>Change</th>
+              <th>Shares</th>
+              <th>Cost</th>
+              <th>Value</th>
+              <th>Gain</th>
+              <th>Return</th>
+            </tr>
 
-        <a class="view-more" href="">View More</a>
-      </section -->
-      <section id="recent-transactions" class="module five columns">
-        <div class="cf">
-          <h3>Transactions</h3>
-          <button class="new-transaction btn" {{action 'newTransaction'}}>New</button>
-        </div>
-        
-          {{#if transactions}}
-            <table>
-              <tr>
-                <th>Ticker</th>
-                <th>Type</th>
-                <th>Price</th>
-                <th>Shares</th>
-                <th>Value</th>
-              </tr>
-              {{#each transaction in transactions}}
-                <tr>
-                  <td>{{#link-to 'quote' transaction.ticker}}{{dashes transaction.ticker}}{{/link-to}}</td>
-                  <td>{{dashes transaction.type}}</td>
-                  <td>{{dashes transaction.price}}</td>
-                  <td>{{dashes transaction.shares}}</td>
-                  <td>{{currency transaction.value}}</td>
-                </tr>
+            {{#if holdings}}
+              {{#each holding in holdings}}
+                <td>{{#link-to 'quote' holding.ticker}}{{holding.ticker}}{{/link-to}}</td>
+                <td>{{dashes holding.lastPrice}}</td>
+                <td>{{dashes holding.dayChange}}</td>
+                <td>{{dashes holding.shares}}</td>
+                <td>{{dashes holding.costBasis}}</td>
+                <td>{{dashes holding.marketValue}}</td>
+                <td>{{dashes holding.overallGain}}</td>
+                <td>{{dashes holding.overallReturn}}</td>
               {{/each}}
-            </table>
-          {{else}}
-            <div class="no-transactions">There are no transactions.</div>
-          {{/if}}
-        </table>
+            {{else}}
+              <h3>No holdings.</h3>
+            {{/if}}
+          </table>
+        </section>
+      </div>
 
-        <!-- a class="view-more" href="">View More</a -->
-      </section>
+      <div class="five columns">
+        <section id="recent-transactions" class="module">
+          <div class="cf">
+            <h3>Transactions</h3>
+            <button class="new-transaction btn" {{action 'newTransaction'}}>New</button>
+          </div>
+          
+            {{#if transactions}}
+              <table>
+                <tr>
+                  <th>Ticker</th>
+                  <th>Type</th>
+                  <th>Price</th>
+                  <th>Shares</th>
+                  <th>Value</th>
+                </tr>
+                {{#each transaction in transactions}}
+                  <tr>
+                    <td>
+                      {{#if transaction.ticker}}
+                        {{#link-to 'quote' transaction.ticker}}{{transaction.ticker}}{{/link-to}}
+                      {{else}}
+                        --
+                      {{/if}}
+                    </td>
+                    <td>{{dashes transaction.type}}</td>
+                    <td>{{dashes transaction.price}}</td>
+                    <td>{{dashes transaction.shares}}</td>
+                    <td>{{currency transaction.value}}</td>
+                  </tr>
+                {{/each}}
+              </table>
+            {{else}}
+              <div class="no-transactions">There are no transactions.</div>
+            {{/if}}
+          </table>
+
+          <!-- a class="view-more" href="">View More</a -->
+        </section>
+      </div>
     </div>
   </div>
 </main>

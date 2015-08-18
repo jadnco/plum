@@ -1,4 +1,12 @@
 #portfolio {
+  #holdings {
+    #holdings-table {
+      th:not(:first-of-type),
+      td:not(:first-of-type) {
+        text-align: right;
+      }
+    }
+  }
   #recent-transactions {
     h3 {
       float: left;
@@ -15,24 +23,6 @@
     }
 
     table {
-      width: 100%;
-      border-collapse: collapse;
-      text-align: left;
-      margin-top: ws(medium);
-      display: inline-table;
-      clear: both;
-
-      th {
-        border-bottom: 1px solid color(light);
-        padding-bottom: ws(tiny);
-      }
-
-      tr:nth-of-type(2) {
-        td {
-          padding-top: ws(tiny);
-        }
-      }
-
       th:not(:first-of-type),
       td:not(:first-of-type) {
         text-align: right;
