@@ -7,9 +7,7 @@ Plum.StockSearchComponent = Ember.Component.extend({
     this.results.addClass('visible');
   },
   focusIn: function() {
-    if (this.get('isSearching')) {
-      this.results.addClass('visible');
-    }
+    this.results.addClass('visible');
   },
   focusOut: function() {
     this.results.removeClass('visible');

@@ -4,7 +4,7 @@
 
 .inner {
   width: 88%;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 12px;
   box-sizing: border-box; }
@@ -46,7 +46,7 @@
 
 @media (min-width: 1000px) {
   .inner {
-    width: 90%;
+    width: 95%;
     padding: 0 ws(small);
     box-sizing: content-box;}
   .column,

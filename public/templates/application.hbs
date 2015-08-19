@@ -27,7 +27,7 @@
 
         {{#link-to 'user' user.username}}
           <div class="avatar">
-            <img {{bind-attr src=user.avatar}}>
+            <img {{! bind-attr src=user.avatar}}>
           </div>
           <div class="username">{{user.username}}</div>
         {{/link-to}}

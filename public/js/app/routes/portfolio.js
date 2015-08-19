@@ -37,8 +37,7 @@ Plum.PortfolioRoute = Ember.Route.extend({
               ticker: null,
               shares: null,
               price: null,
-              value: parseFloat(newDeposit.cash),
-              portfolio: model.get('_id')
+              value: parseFloat(newDeposit.cash)
             });
 
         model.get('transactions').pushObject(transaction);

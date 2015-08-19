@@ -23,10 +23,19 @@ Plum.ApplicationRoute = Ember.Route.extend({
         } else {
           // Create new portfolio record
           var record = store.createRecord('portfolio', {
-            name: newPortfolio.name,
-            cash: parseFloat(newPortfolio.cash),
-            owner: owner
-          });
+                name: newPortfolio.name,
+                cash: parseFloat(newPortfolio.cash),
+                owner: owner
+              }),
+              transaction = store.createRecord('transaction', {
+                type: 'deposit',
+                ticker: null,
+                shares: null,
+                price: null,
+                value: parseFloat(newPortfolio.cash)
+              });
+
+          record.get('transactions').pushObject(transaction);
 
           // Save the portfolio record
           record.save().then(function(_portfolio) {
