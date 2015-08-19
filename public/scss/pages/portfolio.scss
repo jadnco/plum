@@ -1,4 +1,20 @@
 #portfolio {
+  #info {
+    margin-bottom: ws(large);
+
+    h2 {
+      float: left;
+    }
+
+    .btn {
+      float: right;
+
+      &.deposit {
+        margin-left: ws(small);
+      }
+    }
+  }
+
   #holdings {
     #holdings-table {
       th:not(:first-of-type),
@@ -7,6 +23,7 @@
       }
     }
   }
+
   #recent-transactions {
     h3 {
       float: left;

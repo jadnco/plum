@@ -63,7 +63,12 @@
       transition: 0.2s cubic-bezier(.3, 0, 0, 1.3);
 
       #indicator {
-        display: none;
+        //display: none;
+        padding-right: ws(x-large);
+        background-image: url(../images/loader.gif);
+        background-repeat: no-repeat;
+        background-size: 24px;
+        background-position: right ws(small) center;
       }
       
       li {

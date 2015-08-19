@@ -58,12 +58,15 @@ Plum.ApplicationRoute = Ember.Route.extend({
       // TODO:
       // Refresh portfolios model
     },
-    search: function(term) {
+    search: function(term, defer) {
       var self = this;
 
       if (term.length > 0) {
         self.controller.store.find('stock', {query: term}).then(function(results) {
           self.controller.set('stocks', results);
+
+          // Resolve promise
+          defer.resolve();
         });
       }
     },

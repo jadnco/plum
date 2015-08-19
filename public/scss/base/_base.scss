@@ -53,6 +53,10 @@ a {
     background: darken(color(light), 10%);
   }
 
+  &.btn-small {
+    padding: ws(tiny) ws(small);
+  }
+
   &.red {
     color: color(light);
     background: color(red);
