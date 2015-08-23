@@ -1,8 +1,32 @@
 Plum.PortfolioController = Ember.ObjectController.extend({
-  needs: 'application',
   newDeposit: {
     cash: null
   },
+  holdings: function() {
+    console.log('some holdings');
+    var self     = this,
+        holdings = self.get('model.holdings'),
+        results  = [];
+
+    /** TODO:
+      - Store holding changes in localStorage
+    */
+
+    holdings.forEach(function(holding) {
+      self.store.find('quote', holding.get('ticker')).then(function(quote) {
+        holding.set('dayChange', quote.get('change'));
+        holding.set('dayChangePercent', quote.get('percentChange'));
+
+        results.push(holding);
+        console.log(holding.get('ticker') + ' ' + holding.get('dayChange') + ' (' + holding.get('dayChangePercent') +  ')');
+      });
+    });
+
+    // Save portfolio w/ updated holdings
+    self.get('model').save();
+
+    return results;
+  }.property('holdings.@each'),
   actions: {
     showNewDepositModal: function() {
       $('#new-deposit-modal').find('.modal').addClass('visible');

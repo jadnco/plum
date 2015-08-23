@@ -5,8 +5,6 @@ Plum.PortfolioRoute = Ember.Route.extend({
   setupController: function(controller, portfolio) {
     controller.set('model', portfolio);
     portfolio.reload();
-
-    console.log(portfolio);
   },
   actions: {
     delete: function() {

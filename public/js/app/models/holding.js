@@ -5,6 +5,7 @@ Plum.Holding = DS.Model.extend({
   overallReturn: DS.attr(),
   overallGain: DS.attr(),
   dayChange: DS.attr(),
+  dayChangePercent: DS.attr(),
   costBasis: DS.attr(),
   lastPrice: DS.attr()
 });

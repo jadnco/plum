@@ -8,6 +8,7 @@ var HoldingSchema = new Schema({
   overallReturn: Number,
   overallGain: Number,
   dayChange: Number,
+  dayChangePercent: String,
   costBasis: Number,
   lastPrice: Number
 });

@@ -46,10 +46,11 @@
               <th>Return</th>
             </tr>
 
-            {{#if holdings}}
+            {{!-- {{#if holdings}} --}}
               {{#each holding in holdings}}
                 <td>{{#link-to 'quote' holding.ticker}}{{holding.ticker}}{{/link-to}}</td>
                 <td>{{dashes holding.lastPrice}}</td>
+                {{!-- <td>{{dashes day}}</td> --}}
                 <td>{{dashes holding.dayChange}}</td>
                 <td>{{dashes holding.shares}}</td>
                 <td>{{dashes holding.costBasis}}</td>
@@ -57,9 +58,9 @@
                 <td>{{dashes holding.overallGain}}</td>
                 <td>{{dashes holding.overallReturn}}</td>
               {{/each}}
-            {{else}}
-              <h3>No holdings.</h3>
-            {{/if}}
+            {{!-- {{else}} --}}
+              {{!-- <h3>No holdings.</h3> --}}
+            {{!-- {{/if}} --}}
           </table>
         </section>
       </div>

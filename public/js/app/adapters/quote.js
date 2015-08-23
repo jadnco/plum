@@ -6,11 +6,20 @@ Plum.QuoteAdapter = DS.RESTAdapter.extend({
     var host = this.get('host');
     var prefix = this.urlPrefix();
 
-    url.push(id);
+    var start = 'yql?q=';
+
+    var query = 'select * from yahoo.finance.quotes where symbol in ("';
+    query += id + '")';
+
+    start += encodeURIComponent(query);
+    start += '&format=json&env=http%3A%2F%2Fdatatables.org%2Falltables.env&callback=';
+
+    url.push(start);
 
     if (prefix) { url.unshift(prefix); }
 
     url = url.join('/');
+    
     if (!host && url) { url = '/' + url; }
 
     return url;
